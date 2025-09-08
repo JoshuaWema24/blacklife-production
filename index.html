@@ -115,81 +115,80 @@
         font-family: "Playfair Display", serif;
       }
       /* ---------- Footer Styles ---------- */
-    footer {
-      background: #000; /* Black background */
-      color: #ccc;
-      font-family: 'Poppins', sans-serif;
-      padding: 1.5rem 1rem; /* Small padding */
-      text-align: center;
-      font-size: 0.85rem;
-      border-top: 2px solid #FFD700; /* Gold line */
-      width: 100%;
-    }
-
-    /* Company Name */
-    footer h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: #FFD700; /* Gold */
-    }
-
-    /* Links */
-    footer .links {
-      margin: 0.5rem 0;
-    }
-
-    footer .links a {
-      color: #aaa;
-      margin: 0 10px;
-      font-size: 0.85rem;
-      transition: color 0.3s ease;
-    }
-
-    footer .links a:hover {
-      color: #FFD700; /* Gold hover */
-    }
-
-    /* Social Icons */
-    footer .socials {
-      margin: 0.8rem 0;
-    }
-
-    footer .socials a {
-      color: #aaa;
-      margin: 0 10px;
-      transition: color 0.3s ease, transform 0.3s ease;
-      display: inline-block;
-    }
-
-    footer .socials a:hover {
-      color: #FFD700;
-      transform: scale(1.2);
-    }
-
-    footer .socials svg {
-      height: 20px;
-      width: 20px;
-    }
-
-    /* Copyright */
-    footer .copyright {
-      margin-top: 0.5rem;
-      color: #666;
-      font-size: 0.75rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      footer .links a {
-        display: block;
-        margin: 6px 0;
+      footer {
+        background: #000; /* Black background */
+        color: #ccc;
+        font-family: "Poppins", sans-serif;
+        padding: 1.5rem 1rem; /* Small padding */
+        text-align: center;
+        font-size: 0.85rem;
+        border-top: 2px solid #ffd700; /* Gold line */
+        width: 100%;
       }
-    }
+
+      /* Company Name */
+      footer h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #ffd700; /* Gold */
+      }
+
+      /* Links */
+      footer .links {
+        margin: 0.5rem 0;
+      }
+
+      footer .links a {
+        color: #aaa;
+        margin: 0 10px;
+        font-size: 0.85rem;
+        transition: color 0.3s ease;
+      }
+
+      footer .links a:hover {
+        color: #ffd700; /* Gold hover */
+      }
+
+      /* Social Icons */
+      footer .socials {
+        margin: 0.8rem 0;
+      }
+
+      footer .socials a {
+        color: #aaa;
+        margin: 0 10px;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+      }
+
+      footer .socials a:hover {
+        color: #ffd700;
+        transform: scale(1.2);
+      }
+
+      footer .socials svg {
+        height: 20px;
+        width: 20px;
+      }
+
+      /* Copyright */
+      footer .copyright {
+        margin-top: 0.5rem;
+        color: #666;
+        font-size: 0.75rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        footer .links a {
+          display: block;
+          margin: 6px 0;
+        }
+      }
     </style>
   </head>
   <body class="bg-pattern min-h-screen">
-    <!-- Sidebar Menu (for mobile) -->
     <div id="sidebar" class="sidebar p-8">
       <div class="flex justify-end mb-8">
         <button id="close-menu" class="text-white text-3xl">&times;</button>
@@ -202,19 +201,15 @@
         <button
           class="bg-white text-black px-4 py-2 rounded-full font-semibold mt-4 hover:bg-gray-200 transition-colors duration-200"
         >
-          Donate
+          <a href="Events.html"> Events</a>
         </button>
       </nav>
     </div>
 
-    <!-- Hero Section -->
     <div class="relative w-full overflow-hidden">
-      <!-- Main Container -->
       <div class="container mx-auto px-4 py-8 md:py-16">
-        <!-- Navbar -->
         <header class="flex justify-between items-center mb-16">
           <div class="text-xl font-bold text-white">Blacklife Production</div>
-          <!-- Desktop Navigation -->
           <nav class="hidden md:flex items-center space-x-8 text-gray-400">
             <a href="#" class="hover:text-white transition-colors duration-200"
               >Home</a
@@ -225,16 +220,12 @@
             <a href="#" class="hover:text-white transition-colors duration-200"
               >Productions</a
             >
-            <a href="#" class="hover:text-white transition-colors duration-200"
-              >Skit Library</a
-            >
           </nav>
           <button
             class="hidden md:block bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-200"
           >
-            Donate
+            <a href="Events.html"> Events</a>
           </button>
-          <!-- Mobile Hamburger Menu Icon -->
           <button
             id="open-menu"
             class="md:hidden text-white text-3xl leading-none"
@@ -243,15 +234,17 @@
           </button>
         </header>
 
-        <!-- Hero Content Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <!-- Left Content -->
           <div class="space-y-6">
             <p
               class="font-theatre text-3xl sm:text-4xl font-bold"
-              style="color: #ffd700"
+              style="
+                color: #ffd700;
+                text-shadow: 0 0 5px #ffd700;
+                font-size: 50px;
+              "
             >
-              blacklife production
+              Blacklife production
             </p>
             <h1
               class="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
@@ -264,11 +257,12 @@
               through compelling storytelling.
             </p>
             <div class="flex items-center space-x-4">
-              <button
-                class="bg-gradient-to-br from-yellow-600 to-yellow-800 text-white px-6 py-3 rounded-full font-bold shadow-lg transform transition-transform duration-200 hover:scale-105"
+              <a
+                href="buy tickets.html"
+                class="bg-gradient-to-br from-yellow-600 to-yellow-800 text-white px-6 py-3 rounded-full font-bold shadow-lg transform transition-transform duration-200 hover:scale-105 inline-block text-center"
               >
                 Buy tickets
-              </button>
+              </a>
               <a
                 href="#"
                 class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200"
@@ -282,10 +276,8 @@
             </div>
           </div>
 
-          <!-- Right Image -->
           <div class="relative flex justify-center md:justify-end">
             <div class="relative w-80 h-96 md:w-full md:h-full max-w-lg">
-              <!-- Gold circles background -->
               <div
                 class="absolute w-64 h-64 bg-yellow-500 rounded-full blur-3xl opacity-50 -top-10 -right-10 transform circle-animation-1"
               ></div>
@@ -295,7 +287,6 @@
               <div
                 class="absolute w-24 h-24 bg-yellow-900 rounded-full blur-3xl opacity-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 circle-animation-3"
               ></div>
-              <!-- Placeholder for the image of a stage/actors -->
               <img
                 src="retro-theatre-scene-celebrate-world-theatre-day.jpg"
                 alt="A scene from a Blacklife Production play"
@@ -305,7 +296,6 @@
           </div>
         </div>
 
-        <!-- Stats Section -->
         <div class="mt-24 grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div
             class="glassmorphism p-6 flex flex-col items-center sm:items-start text-center sm:text-left rounded-xl shadow-lg card-animation stat-card-1"
@@ -327,9 +317,7 @@
           </div>
         </div>
 
-        <!-- Productions Section -->
         <div class="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <!-- Productions Gallery -->
           <div class="grid grid-cols-2 gap-4">
             <img
               src="retro-world-theatre-day-scenes-with-incredible-view-royal-theatre - Copy.jpg"
@@ -353,7 +341,6 @@
             />
           </div>
 
-          <!-- Productions Text Content -->
           <div class="space-y-6">
             <span class="text-sm text-gray-500 uppercase">Events</span>
             <h2 class="text-white text-3xl sm:text-4xl font-bold leading-tight">
@@ -375,11 +362,9 @@
       </div>
     </div>
 
-    <!-- Footer -->
     <footer>
       <h3>Blacklife Production</h3>
 
-      <!-- Quick Links -->
       <div class="links">
         <a href="#">Home</a>
         <a href="#">About Us</a>
@@ -387,9 +372,7 @@
         <a href="#">Skit Library</a>
       </div>
 
-      <!-- Social Icons -->
       <div class="socials">
-        <!-- Facebook -->
         <a href="#">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -407,7 +390,6 @@
           </svg>
         </a>
 
-        <!-- Instagram -->
         <a href="#">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -440,7 +422,6 @@
           </svg>
         </a>
 
-        <!-- YouTube -->
         <a href="#">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -462,7 +443,6 @@
         </a>
       </div>
 
-      <!-- Copyright -->
       <div class="copyright">
         &copy; 2024 <span style="color: #ffd700">Blacklife Production</span>.
         All Rights Reserved.
