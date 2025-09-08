@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blacklife Production</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            padding: 5px;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #111;
+            color: #ccc;
+            overflow-x: hidden;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(circle at 10% 10%, #222 1px, transparent 1px),
+                              radial-gradient(circle at 90% 90%, #222 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .glassmorphism {
+            background-color: rgba(30, 30, 30, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+
+        @keyframes moveInCircles {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
+            50% { transform: scale(1.1) translate(10px, -10px); opacity: 0.8; }
+            100% { transform: scale(1) translate(0, 0); opacity: 0.5; }
+        }
+
+        .circle-animation-1 {
+            animation: moveInCircles 10s infinite ease-in-out;
+            animation-delay: 0s;
+        }
+        .circle-animation-2 {
+            animation: moveInCircles 12s infinite ease-in-out;
+            animation-delay: -2s;
+        }
+        .circle-animation-3 {
+            animation: moveInCircles 11s infinite ease-in-out;
+            animation-delay: -4s;
+        }
+
+        .card-animation {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlideUp 0.8s forwards;
+        }
+
+        .card-animation.stat-card-1 { animation-delay: 0.1s; }
+        .card-animation.stat-card-2 { animation-delay: 0.2s; }
+        .card-animation.stat-card-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 75%;
+            max-width: 300px;
+            background-color: #1a1a1a;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 50;
+        }
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .font-theatre {
+            font-family: 'Playfair Display', serif;
+            font-weight:bolder;
+        }
+    </style>
+</head>
+<body class="bg-pattern min-h-screen">
+
+    <!-- Sidebar Menu (for mobile) -->
+    <div id="sidebar" class="sidebar p-8">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu" class="text-white text-3xl">&times;</button>
+        </div>
+        <nav class="flex flex-col space-y-4">
+            <a href="#" class="text-white text-lg font-semibold">Home</a>
+            <a href="#" class="text-white text-lg font-semibold">About Us</a>
+            <a href="#" class="text-white text-lg font-semibold">Productions</a>
+            <a href="#" class="text-white text-lg font-semibold">Skit Library</a>
+            <button class="bg-white text-black px-4 py-2 rounded-full font-semibold mt-4 hover:bg-gray-200 transition-colors duration-200">Donate</button>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="relative w-full overflow-hidden">
+        <!-- Main Container -->
+        <div class="container mx-auto px-4 py-8 md:py-16">
+
+            <!-- Navbar -->
+            <header class="flex justify-between items-center mb-16">
+                <div class="text-xl font-bold text-white">Blacklife Production</div>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8 text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors duration-200">Home</a>
+                    <a href="#" class="hover:text-white transition-colors duration-200">About Us</a>
+                    <a href="#" class="hover:text-white transition-colors duration-200">Productions</a>
+                    <a href="#" class="hover:text-white transition-colors duration-200">Skit Library</a>
+                </nav>
+                <button class="hidden md:block bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-200">Donate</button>
+                <!-- Mobile Hamburger Menu Icon -->
+                <button id="open-menu" class="md:hidden text-white text-3xl leading-none">☰</button>
+            </header>
+
+            <!-- Hero Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-6">
+                    <p class="font-theatre text-4xl font-bold" style="color:#FFD700;">Blacklife production</p>
+                    <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+                        Educating and Entertaining Through the Art of Theatre.
+                    </h1>
+                    <p class="text-gray-400 text-lg">
+                        Blacklife Production is dedicated to using the powerful medium of theatre and skits to **educate, and entertain** our audience through compelling storytelling.
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <button class="bg-gradient-to-br from-yellow-600 to-yellow-800 text-white px-6 py-3 rounded-full font-bold shadow-lg transform transition-transform duration-200 hover:scale-105">
+                            Learn About Our Mission
+                        </button>
+                        <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200">
+                            <span>View Our Productions</span>
+                            <span class="transform transition-transform duration-200 hover:translate-x-1">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Image -->
+                <div class="relative flex justify-center md:justify-end">
+                    <div class="relative w-80 h-96 md:w-full md:h-full max-w-lg">
+                        <!-- Gold circles background -->
+                        <div class="absolute w-64 h-64 bg-yellow-500 rounded-full blur-3xl opacity-50 -top-10 -right-10 transform circle-animation-1"></div>
+                        <div class="absolute w-40 h-40 bg-yellow-700 rounded-full blur-3xl opacity-50 -bottom-10 -left-10 transform circle-animation-2"></div>
+                        <div class="absolute w-24 h-24 bg-yellow-900 rounded-full blur-3xl opacity-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 circle-animation-3"></div>
+                        <!-- Placeholder for the image of a stage/actors -->
+                        <img src="https://placehold.co/500x700/1e1e1e/888888?text=A+Scene+from+a+Play" alt="A scene from a Blacklife Production play" class="relative z-10 w-full h-auto rounded-xl">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="mt-24 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="glassmorphism p-6 flex flex-col items-center sm:items-start text-center sm:text-left rounded-xl shadow-lg card-animation stat-card-1">
+                    <h2 class="text-3xl font-bold text-white mb-1">20+</h2>
+                    <p class="text-gray-400">Plays Produced</p>
+                </div>
+                <div class="glassmorphism p-6 flex flex-col items-center sm:items-start text-center sm:text-left rounded-xl shadow-lg card-animation stat-card-2">
+                    <h2 class="text-3xl font-bold text-white mb-1">50k+</h2>
+                    <p class="text-gray-400">Souls Reached</p>
+                </div>
+                <div class="glassmorphism p-6 flex flex-col items-center sm:items-start text-center sm:text-left rounded-xl shadow-lg card-animation stat-card-3">
+                    <h2 class="text-3xl font-bold text-white mb-1">5+</h2>
+                    <p class="text-gray-400">Years in Service</p>
+                </div>
+            </div>
+
+            <!-- Productions Section -->
+            <div class="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <!-- Productions Gallery -->
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://placehold.co/400x400/1e1e1e/888888?text=Production+1" alt="Production 1" class="rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                    <img src="https://placehold.co/400x400/1e1e1e/888888?text=Production+2" alt="Production 2" class="rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer mt-4 lg:mt-12">
+                    <img src="https://placehold.co/400x400/1e1e1e/888888?text=Production+3" alt="Production 3" class="rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                    <img src="https://placehold.co/400x400/1e1e1e/888888?text=Production+4" alt="Production 4" class="rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer mt-4 lg:mt-12">
+                </div>
+
+                <!-- Productions Text Content -->
+                <div class="space-y-6">
+                    <span class="text-sm text-gray-500 uppercase">Featured Work</span>
+                    <h2 class="text-white text-3xl sm:text-4xl font-bold leading-tight">Our Latest Productions.</h2>
+                    <p class="text-gray-400">
+                        Explore our library of theatrical productions and skits, each crafted to deliver powerful, thought-provoking stories and inspiration.
+                    </p>
+                    <a href="#" class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200">
+                        <span>See all productions</span>
+                        <span class="transform transition-transform duration-200 hover:translate-x-1">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const openMenuBtn = document.getElementById('open-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const sidebar = document.getElementById('sidebar');
+
+        openMenuBtn.addEventListener('click', () => {
+            sidebar.classList.add('open');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+        });
+    </script>
+</body>
+</html>
