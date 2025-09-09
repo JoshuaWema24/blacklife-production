@@ -47,7 +47,7 @@
       .dropdown-content.open {
         max-height: 200px;
       }
-      
+
       .radio-label {
         transition: background-color 0.2s;
       }
@@ -59,57 +59,51 @@
   <body class="bg-pattern min-h-screen flex items-center justify-center">
     <div class="container mx-auto px-4 py-8 md:py-16">
       <div class="flex justify-center">
-        <div class="glassmorphism p-8 rounded-xl shadow-lg w-full max-w-xl text-center">
+        <div
+          class="glassmorphism p-8 rounded-xl shadow-lg w-full max-w-xl text-center"
+        >
           <h1 class="text-white text-3xl font-bold mb-4" id="event-title"></h1>
           <p class="text-gray-400 mb-8">
             Select your preferred ticket type and confirm your purchase.
           </p>
-
-          <div class="text-left mb-6">
-            <h4 class="text-lg text-gray-300 mb-4">Ticket Prices:</h4>
-            
-            <div class="space-y-4">
-              <!-- Ticket Option 1 -->
-              <div>
-                <input type="radio" id="standard" name="ticket-type" value="25.00" class="hidden" data-label="Standard (Adult)">
-                <label for="standard" class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200">
-                  <span class="text-white">Standard (Adult)</span>
-                  <span class="text-white font-bold">$25.00</span>
-                </label>
-              </div>
-
-              <!-- Ticket Option 2 -->
-              <div>
-                <input type="radio" id="student" name="ticket-type" value="15.00" class="hidden" data-label="Student (with ID)">
-                <label for="student" class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200">
-                  <span class="text-white">Student (with ID)</span>
-                  <span class="text-white font-bold">$15.00</span>
-                </label>
-              </div>
-
-              <!-- Ticket Option 3 -->
-              <div>
-                <input type="radio" id="vip" name="ticket-type" value="50.00" class="hidden" data-label="VIP Seating">
-                <label for="vip" class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200">
-                  <span class="text-white">VIP Seating</span>
-                  <span class="text-white font-bold">$50.00</span>
-                </label>
-              </div>
-            </div>
-            
-            <p class="text-white mt-6 text-center text-xl font-bold">
-              Selected Ticket: <span id="selected-ticket-label" class="font-normal text-yellow-500">None</span>
-              <br>
-              Total: <span id="total-price" class="text-yellow-500">$0.00</span>
-            </p>
-
-          </div>
-          <button
-            id="pay-now-button"
-            class="w-full bg-gradient-to-br from-yellow-600 to-yellow-800 text-white px-6 py-3 rounded-full font-bold shadow-lg transform transition-transform duration-200 hover:scale-105"
+          <label for="phone-number" class="block text-sm text-gray-400 mb-2"
+            >Enter your first name:</label
           >
-            Pay Now
-          </button>
+          <input
+            type="text"
+            id="first-name"
+            class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+            title="Enter your first name"
+            placeholder="First Name"
+          />
+          <label for="phone-number" class="block text-sm text-gray-400 mb-2"
+            >Enter your last name:</label
+          >
+          <input
+            type="text"
+            id="last-name"
+            class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+            placeholder="last name"
+          />
+          <label for="id-number" class="block text-sm text-gray-400 mb-2"
+            >Enter your National ID number:</label
+          >
+          <input
+            type="text"
+            id="id-number"
+            class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+            placeholder="Id number"
+          />
+          <label for="phoneNumber" class="block text-sm text-gray-400 mb-2"
+            >Enter your phone number for payment:</label
+          >
+          <input
+            type="text"
+            id="phoneNumber"
+            class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+            placeholder="e.g., +254 712 345 678"
+          />
+
           <div id="payment-dropdown" class="dropdown-content mt-4">
             <label for="phone-number" class="block text-sm text-gray-400 mb-2"
               >Enter your phone number for payment:</label
@@ -129,6 +123,116 @@
         </div>
       </div>
     </div>
+
+    <div class="container mx-auto px-4 py-8 md:py-16">
+      <div class="flex justify-center">
+        <div
+          class="glassmorphism p-8 rounded-xl shadow-lg w-full max-w-xl text-center"
+        >
+          <h1 class="text-white text-3xl font-bold mb-4" id="event-title"></h1>
+          <p class="text-gray-400 mb-8">
+            Select your preferred ticket type and confirm your purchase.
+          </p>
+
+          <div class="text-left mb-6">
+            <h4 class="text-lg text-gray-300 mb-4">Ticket Prices:</h4>
+
+            <div class="space-y-4">
+              <!-- Ticket Option 1 -->
+              <div>
+                <input
+                  type="radio"
+                  id="standard"
+                  name="ticket-type"
+                  value="25.00"
+                  class="hidden"
+                  data-label="Standard (Adult)"
+                />
+                <label
+                  for="standard"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
+                  <span class="text-white">Standard (Adult)</span>
+                  <span class="text-white font-bold">$25.00</span>
+                </label>
+              </div>
+
+              <!-- Ticket Option 2 -->
+              <div>
+                <input
+                  type="radio"
+                  id="student"
+                  name="ticket-type"
+                  value="15.00"
+                  class="hidden"
+                  data-label="Student (with ID)"
+                />
+                <label
+                  for="student"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
+                  <span class="text-white">Student (with ID)</span>
+                  <span class="text-white font-bold">$15.00</span>
+                </label>
+              </div>
+
+              <!-- Ticket Option 3 -->
+              <div>
+                <input
+                  type="radio"
+                  id="vip"
+                  name="ticket-type"
+                  value="50.00"
+                  class="hidden"
+                  data-label="VIP Seating"
+                />
+                <label
+                  for="vip"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
+                  <span class="text-white">VIP Seating</span>
+                  <span class="text-white font-bold">$50.00</span>
+                </label>
+              </div>
+            </div>
+
+            <p class="text-white mt-6 text-center text-xl font-bold">
+              Selected Ticket:
+              <span
+                id="selected-ticket-label"
+                class="font-normal text-yellow-500"
+                >None</span
+              >
+              <br />
+              Total: <span id="total-price" class="text-yellow-500">$0.00</span>
+            </p>
+          </div>
+          <button
+            id="pay-now-button"
+            class="w-full bg-gradient-to-br from-yellow-600 to-yellow-800 text-white px-6 py-3 rounded-full font-bold shadow-lg transform transition-transform duration-200 hover:scale-105"
+          >
+            Pay Now
+          </button>
+          <div id="payment-dropdown" class="dropdown-content mt-4">
+            <label for="phone-number" class="block text-sm text-gray-400 mb-2"
+              >Enter your phone number for payment:</label
+            >
+            <input
+              type="tel"
+              id="phone-number"
+              class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+              placeholder="e.g., +254 712 345 678"
+            />
+
+            <button
+              class="w-full mt-4 bg-yellow-600 text-white px-6 py-3 rounded-full font-bold hover:bg-yellow-700 transition-colors duration-200"
+            >
+              Confirm & Pay
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -139,42 +243,88 @@
 
         const payNowBtn = document.getElementById("pay-now-button");
         const paymentDropdown = document.getElementById("payment-dropdown");
-        const ticketOptions = document.querySelectorAll('input[name="ticket-type"]');
-        const selectedTicketLabel = document.getElementById("selected-ticket-label");
+        const ticketOptions = document.querySelectorAll(
+          'input[name="ticket-type"]'
+        );
+        const selectedTicketLabel = document.getElementById(
+          "selected-ticket-label"
+        );
         const totalPrice = document.getElementById("total-price");
+        const confirmPayBtn = document.getElementById("confirm-pay-button");
+        const phoneInput = document.getElementById("phone-number");
 
         let selectedPrice = 0;
+        let ticketLabel = "";
 
-        ticketOptions.forEach(radio => {
-          radio.addEventListener('change', (event) => {
+        // Update selected ticket
+        ticketOptions.forEach((radio) => {
+          radio.addEventListener("change", (event) => {
             selectedPrice = parseFloat(event.target.value);
-            const ticketLabel = event.target.getAttribute('data-label');
+            ticketLabel = event.target.getAttribute("data-label");
             selectedTicketLabel.textContent = ticketLabel;
             totalPrice.textContent = `$${selectedPrice.toFixed(2)}`;
-            // Close dropdown if it was open
-            if (paymentDropdown.classList.contains('open')) {
-              paymentDropdown.classList.remove('open');
+            if (paymentDropdown.classList.contains("open")) {
+              paymentDropdown.classList.remove("open");
             }
           });
         });
 
+        // Show dropdown on Pay Now
         payNowBtn.addEventListener("click", () => {
           if (selectedPrice > 0) {
             paymentDropdown.classList.toggle("open");
           } else {
-            // A simple message box instead of alert()
-            const messageBox = document.createElement('div');
+            const messageBox = document.createElement("div");
             messageBox.innerHTML = `
-              <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-white">
-                  <p class="text-center mb-4">Please select a ticket type first.</p>
-                  <button class="w-full bg-yellow-600 text-white px-4 py-2 rounded-full hover:bg-yellow-700 transition-colors duration-200" onclick="this.parentElement.parentElement.remove()">
-                    OK
-                  </button>
-                </div>
-              </div>
-            `;
+          <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-white">
+              <p class="text-center mb-4">Please select a ticket type first.</p>
+              <button class="w-full bg-yellow-600 text-white px-4 py-2 rounded-full hover:bg-yellow-700 transition-colors duration-200" onclick="this.parentElement.parentElement.remove()">
+                OK
+              </button>
+            </div>
+          </div>
+        `;
             document.body.appendChild(messageBox);
+          }
+        });
+
+        // Confirm & Pay button triggers backend call
+        confirmPayBtn.addEventListener("click", async () => {
+          const phoneNumber = phoneInput.value.trim();
+
+          if (!phoneNumber.startsWith("254")) {
+            alert("Please enter phone number in format 2547XXXXXXXX");
+            return;
+          }
+          if (selectedPrice <= 0) {
+            alert("Please select a ticket type first.");
+            return;
+          }
+
+          try {
+            const response = await fetch("http://localhost:3000/stkpush", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                amount: selectedPrice,
+                phone: phoneNumber,
+              }),
+            });
+
+            const data = await response.json();
+            console.log("STK Push Response:", data);
+
+            if (data.CheckoutRequestID) {
+              alert(
+                "Payment request sent! Check your phone to complete the payment."
+              );
+            } else {
+              alert("Payment initiation failed. Check console for details.");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Something went wrong. Please try again.");
           }
         });
       });
