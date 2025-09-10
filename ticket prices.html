@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ticket Details - Blacklife Production</title>
+    <title>Ticket Prices - Blacklife Production</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -41,99 +41,411 @@
       }
 
       .font-theatre {
-        font-family: "Playfair Display", serif;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 75%;
+        max-width: 300px;
+        background-color: #1a1a1a;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 50;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      /* ---------- Footer Styles ---------- */
+      footer {
+        background: #000;
+        color: #ccc;
+        font-family: "Inter", sans-serif;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        font-size: 0.85rem;
+        border-top: 2px solid #ffd700;
+        width: 100%;
+        margin-top: 5rem;
+      }
+
+      /* Company Name */
+      footer h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #ffd700;
+      }
+
+      /* Links */
+      footer .links {
+        margin: 0.5rem 0;
+      }
+
+      footer .links a {
+        color: #aaa;
+        margin: 0 10px;
+        font-size: 0.85rem;
+        transition: color 0.3s ease;
+      }
+
+      footer .links a:hover {
+        color: #ffd700;
+      }
+
+      /* Social Icons */
+      footer .socials {
+        margin: 0.8rem 0;
+      }
+
+      footer .socials a {
+        color: #aaa;
+        margin: 0 10px;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+      }
+
+      footer .socials a:hover {
+        color: #ffd700;
+        transform: scale(1.2);
+      }
+
+      footer .socials svg {
+        height: 20px;
+        width: 20px;
+      }
+
+      /* Copyright */
+      footer .copyright {
+        margin-top: 0.5rem;
+        color: #666;
+        font-size: 0.75rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        footer .links a {
+          display: block;
+          margin: 6px 0;
+        }
+      }
+
+      #purchase-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #222;
+        color: #fff;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        z-index: 100;
+        display: none;
+        text-align: center;
+        border: 2px solid #ffd700;
+        max-width: 90%;
       }
     </style>
   </head>
   <body class="bg-pattern min-h-screen">
-    <!-- Main Container -->
-    <div class="container mx-auto px-4 py-8 md:py-16">
-      <!-- Header -->
-      <header class="flex justify-between items-center mb-16">
-       <div class="text-xl font-bold text-white" style="color: #ffd700; font-size: 30px; padding: 30px;">Blacklife Production</div>
-       
-      </header>
-
-      <!-- Ticket Details Section -->
-      <div class="text-center mb-16">
-        <h1
-          class="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
-        >
-          Choose Your Ticket
-        </h1>
-        <p class="text-gray-400 text-lg mt-4">
-          Select the perfect ticket for your experience.
-        </p>
+    <!-- Sidebar for mobile -->
+    <div id="sidebar" class="sidebar p-8">
+      <div class="flex justify-end mb-8">
+        <button id="close-menu" class="text-white text-3xl">&times;</button>
       </div>
-      <hr class="border-t border-gray-700 my-8" />
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-         <!-- VIP Ticket Card -->
-        <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
-          <img
-            src="https://placehold.co/400x300/ffd700/111?text=Couples+Ticket"
-            alt="Couples Ticket"
-            class="rounded-xl w-full h-48 object-cover mb-4"
-          />
-          <h2 class="text-2xl font-bold text-white mb-2">Couples or Group of two Seating</h2>
-          <p class="text-gray-400 text-sm mb-4 flex-grow">
-            Perfect for two! Enjoy the show with a loved one from premium seating. Includes a complimentary drink each with a backstage pass.
-          </p>
-          <div class="mt-auto">
-            <span class="text-gold-400 text-lg font-bold" style="color: #ffd700;">KES 2500</span>
-          </div>
-        </div>
+      <nav class="flex flex-col space-y-4">
+        <a href="index.html" class="text-white text-lg font-semibold">Home</a>
+        <a href="ticket prices.html" class="text-white text-lg font-semibold"
+          >Tickets</a
+        >
+        <a href="productions.html" class="text-white text-lg font-semibold"
+          >Productions</a
+        >
+        <button
+          class="bg-white text-black px-4 py-2 rounded-full font-semibold mt-4 hover:bg-gray-200 transition-colors duration-200"
+        >
+          <a href="Events.html"> Events</a>
+        </button>
+      </nav>
+    </div>
 
-        <!-- VIP Ticket Card -->
-        <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
-          <img
-            src="https://placehold.co/400x300/ffd700/111?text=VIP+Pass"
-            alt="VIP Ticket"
-            class="rounded-xl w-full h-48 object-cover mb-4"
-          />
-          <h2 class="text-2xl font-bold text-white mb-2">VIP Seating</h2>
-          <p class="text-gray-400 text-sm mb-4 flex-grow">
-            Experience the event from the best seats in the house. Includes a backstage and complimentary refreshments.
-          </p>
-          <div class="mt-auto">
-            <span class="text-gold-400 text-lg font-bold" style="color: #ffd700;">KES 1500</span>
-          </div>
-        </div>
- 
-       
-        <!-- Standard Ticket Card -->
-        <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
-          <img
-            src="https://placehold.co/400x300/3b82f6/111?text=Standard+Ticket"
-            alt="Standard Ticket"
-            class="rounded-xl w-full h-48 object-cover mb-4"
-          />
-          <h2 class="text-2xl font-bold text-white mb-2">Standard Seating</h2>
-          <p class="text-gray-400 text-sm mb-4 flex-grow">
-            Enjoy the show with comfortable seating in the main section. A great way to experience the event.
-          </p>
-          <div class="mt-auto">
-            <span class="text-gold-400 text-lg font-bold" style="color: #ffd700;">KES 500</span>
-            
-          </div>
-        </div>
+    <!-- Main Container -->
+    <div class="relative w-full overflow-hidden">
+      <div class="container mx-auto px-4 py-8 md:py-16">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-16">
+          <div class="text-xl font-bold text-white">Blacklife Production</div>
+          <nav class="hidden md:flex items-center space-x-8 text-gray-400">
+            <a
+              href="index.html"
+              class="hover:text-white transition-colors duration-200"
+              >Home</a
+            >
+            <a
+              href="ticket prices.html"
+              class="hover:text-white transition-colors duration-200"
+              >Tickets</a
+            >
+            <a
+              href="productions.html"
+              class="hover:text-white transition-colors duration-200"
+              >Productions</a
+            >
+          </nav>
+          <button
+            class="hidden md:block bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-200"
+          >
+            <a href="Events.html"> Events</a>
+          </button>
+          <button
+            id="open-menu"
+            class="md:hidden text-white text-3xl leading-none"
+          >
+            ☰
+          </button>
+        </header>
 
-        <!-- Student Ticket Card -->
-        <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center">
-          <img
-            src="https://placehold.co/400x300/f59e0b/111?text=Student+Ticket"
-            alt="Student Ticket"
-            class="rounded-xl w-full h-48 object-cover mb-4"
-          />
-          <h2 class="text-2xl font-bold text-white mb-2">Student seating</h2>
-          <p class="text-gray-400 text-sm mb-4 flex-grow">
-            A discounted option for students. Please present a valid student ID at the entrance for verification.
+        <!-- Ticket Details Section -->
+        <div class="text-center mb-16">
+          <h1
+            class="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight font-theatre"
+          >
+            Choose Your Ticket
+          </h1>
+          <p class="text-gray-400 text-lg mt-4">
+            Select the perfect ticket for your experience.
           </p>
-          <div class="mt-auto">
-            <span class="text-gold-400 text-lg font-bold" style="color: #ffd700;">KES 200</span>
-            
+        </div>
+        <hr class="border-t border-gray-700 my-8" />
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Couples or Group Ticket Card -->
+          <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105">
+            <img
+              src="https://placehold.co/400x300/ffd700/111?text=Couples+Ticket"
+              alt="Couples Ticket"
+              class="rounded-xl w-full h-48 object-cover mb-4"
+              loading="lazy"
+              decoding="async"
+              onerror="this.src='https://placehold.co/400x300/222222/555555?text=Image+Missing';"
+            />
+            <h2 class="text-2xl font-bold text-white mb-2">
+              Couples or Group of two Seating
+            </h2>
+            <p class="text-gray-400 text-sm mb-4 flex-grow">
+              Perfect for two! Enjoy the show with a loved one from premium
+              seating. Includes a complimentary drink each with a backstage pass.
+            </p>
+            <div class="mt-auto">
+              <span
+                class="text-gold-400 text-lg font-bold"
+                style="color: #ffd700"
+                >KES 2500</span
+              >
+            </div>
+            <button
+              class="buy-btn mt-4 px-6 py-2 rounded-full font-semibold text-black bg-yellow-500 hover:bg-yellow-600 transition-colors"
+              data-ticket-type="Couples"
+            >
+              Buy Now
+            </button>
+          </div>
+
+          <!-- VIP Ticket Card -->
+          <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105">
+            <img
+              src="https://placehold.co/400x300/ffd700/111?text=VIP+Pass"
+              alt="VIP Ticket"
+              class="rounded-xl w-full h-48 object-cover mb-4"
+              loading="lazy"
+              decoding="async"
+              onerror="this.src='https://placehold.co/400x300/222222/555555?text=Image+Missing';"
+            />
+            <h2 class="text-2xl font-bold text-white mb-2">VIP Seating</h2>
+            <p class="text-gray-400 text-sm mb-4 flex-grow">
+              Experience the event from the best seats in the house. Includes a
+              backstage pass and complimentary refreshments.
+            </p>
+            <div class="mt-auto">
+              <span
+                class="text-gold-400 text-lg font-bold"
+                style="color: #ffd700"
+                >KES 1500</span
+              >
+            </div>
+            <button
+              class="buy-btn mt-4 px-6 py-2 rounded-full font-semibold text-black bg-yellow-500 hover:bg-yellow-600 transition-colors"
+              data-ticket-type="VIP"
+            >
+              Buy Now
+            </button>
+          </div>
+
+          <!-- Standard Ticket Card -->
+          <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105">
+            <img
+              src="https://placehold.co/400x300/3b82f6/111?text=Standard+Ticket"
+              alt="Standard Ticket"
+              class="rounded-xl w-full h-48 object-cover mb-4"
+              loading="lazy"
+              decoding="async"
+              onerror="this.src='https://placehold.co/400x300/222222/555555?text=Image+Missing';"
+            />
+            <h2 class="text-2xl font-bold text-white mb-2">Standard Seating</h2>
+            <p class="text-gray-400 text-sm mb-4 flex-grow">
+              Enjoy the show with comfortable seating in the main section. A
+              great way to experience the event.
+            </p>
+            <div class="mt-auto">
+              <span
+                class="text-gold-400 text-lg font-bold"
+                style="color: #ffd700"
+                >KES 500</span
+              >
+            </div>
+            <button
+              class="buy-btn mt-4 px-6 py-2 rounded-full font-semibold text-black bg-yellow-500 hover:bg-yellow-600 transition-colors"
+              data-ticket-type="Standard"
+            >
+              Buy Now
+            </button>
+          </div>
+
+          <!-- Student Ticket Card -->
+          <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105">
+            <img
+              src="https://placehold.co/400x300/f59e0b/111?text=Student+Ticket"
+              alt="Student Ticket"
+              class="rounded-xl w-full h-48 object-cover mb-4"
+              loading="lazy"
+              decoding="async"
+              onerror="this.src='https://placehold.co/400x300/222222/555555?text=Image+Missing';"
+            />
+            <h2 class="text-2xl font-bold text-white mb-2">Student Seating</h2>
+            <p class="text-gray-400 text-sm mb-4 flex-grow">
+              A discounted option for students. Please present a valid student
+              ID at the entrance for verification.
+            </p>
+            <div class="mt-auto">
+              <span
+                class="text-gold-400 text-lg font-bold"
+                style="color: #ffd700"
+                >KES 200</span
+              >
+            </div>
+            <button
+              class="buy-btn mt-4 px-6 py-2 rounded-full font-semibold text-black bg-yellow-500 hover:bg-yellow-600 transition-colors"
+              data-ticket-type="Student"
+            >
+              Buy Now
+            </button>
           </div>
         </div>
       </div>
     </div>
+    
+    <!-- Purchase Message Box -->
+    <div id="purchase-message" class="glassmorphism p-6 rounded-xl text-center">
+      <p class="text-xl text-white mb-4">Thank you for your purchase!</p>
+      <p class="text-gray-400">A <span id="purchased-ticket-type" class="text-yellow-500 font-bold"></span> ticket has been added to your cart.</p>
+      <button id="close-message" class="mt-6 px-6 py-2 rounded-full bg-yellow-500 text-black font-semibold hover:bg-yellow-600 transition-colors">
+        Close
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container mx-auto px-4 py-8">
+        <h3>Blacklife Production</h3>
+
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="ticket prices.html">Tickets</a>
+          <a href="productions.html">Productions</a>
+        </div>
+
+        <div class="socials">
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.873v-6.985h-2.54V12h2.54V9.797c0-2.505 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.895h-2.33V22C18.343 21.128 22 16.991 22 12z"
+              />
+            </svg>
+          </a>
+
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.772 1.624 4.907 4.91.058 1.265.07 1.645.07 4.849 0 3.204-.012 3.584-.07 4.85-.135 3.251-1.611 4.771-4.91 4.906-1.266.058-1.644.07-4.85.07s-3.583-.012-4.85-.07c-3.252-.134-4.772-1.61-4.91-4.91C2.174 15.647 2.162 15.268 2.162 12c0-3.259.014-3.668.072-4.948.2-4.358 2.618-6.78 6.98-6.98C8.332 2.176 8.741 2.163 12 2.163zm0 1.837c-3.18 0-3.557.012-4.808.07-2.707.123-3.96 1.376-4.083 4.083-.058 1.251-.07 1.628-.07 4.808s.012 3.557.07 4.808c.123 2.707 1.376 3.96 4.083 4.083 1.251.058 1.628.07 4.808.07s3.557-.012 4.808-.07c2.707-.123 3.96-1.376 4.083-4.083.058-1.251.07-1.628.07-4.808s-.012-3.557-.07-4.808c-.123-2.707-1.376-3.96-4.083-4.083-1.251-.058-1.628-.07-4.808-.07zm0 3.905a4.095 4.095 0 1 1 0 8.19 4.095 4.095 0 0 1 0-8.19zm0 6.753a2.658 2.658 0 1 0 0-5.316 2.658 2.658 0 0 0 0 5.316zm4.406-7.845a.96.96 0 1 1 0-1.92.96.96 0 0 1 0 1.92z"
+              />
+            </svg>
+          </a>
+
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.615 3.184c-3.328-.868-6.864-.868-10.192 0C6.046 3.992 4 6.002 4 8.798v6.404c0 2.796 2.046 4.806 5.423 5.614 3.328.868 6.864.868 10.192 0 3.377-.808 5.423-2.818 5.423-5.614V8.798c0-2.796-2.046-4.806-5.423-5.614zM12 17.026c-2.772 0-5.026-2.254-5.026-5.026S9.228 6.974 12 6.974s5.026 2.254 5.026 5.026-2.254 5.026-5.026 5.026zm-1.874-7.554L15.3 12l-5.174 3.528V9.472z"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div class="copyright">
+          &copy; 2024 <span style="color: #ffd700">Blacklife Production</span>.
+          All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const openMenuBtn = document.getElementById("open-menu");
+      const closeMenuBtn = document.getElementById("close-menu");
+      const sidebar = document.getElementById("sidebar");
+      const buyBtns = document.querySelectorAll(".buy-btn");
+      const purchaseMessage = document.getElementById("purchase-message");
+      const closeMessageBtn = document.getElementById("close-message");
+      const purchasedTicketType = document.getElementById("purchased-ticket-type");
+
+      // Sidebar functionality
+      openMenuBtn.addEventListener("click", () => {
+        sidebar.classList.add("open");
+      });
+
+      closeMenuBtn.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+      });
+
+      // Buy button functionality
+      buyBtns.forEach(button => {
+        button.addEventListener("click", () => {
+          const ticketType = button.dataset.ticketType;
+          purchasedTicketType.textContent = ticketType;
+          purchaseMessage.style.display = "block";
+        });
+      });
+
+      // Close message box
+      closeMessageBtn.addEventListener("click", () => {
+        purchaseMessage.style.display = "none";
+      });
+    </script>
   </body>
 </html>
