@@ -12,16 +12,10 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Permanent+Marker&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Permanent+Marker&display=swap" rel="stylesheet">
     <style>
-      *{
-        padding: 5px;
-      }
       body {
         font-family: "Inter", sans-serif;
         background: #111;
@@ -118,17 +112,20 @@
       }
 
       .font-theatre {
-        font-family: "Playfair Display", serif;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;
       }
+
       /* ---------- Footer Styles ---------- */
       footer {
-        background: #000; /* Black background */
+        background: #000;
         color: #ccc;
         font-family: "Poppins", sans-serif;
-        padding: 1.5rem 1rem; /* Small padding */
+        padding: 1.5rem 1rem;
         text-align: center;
         font-size: 0.85rem;
-        border-top: 2px solid #ffd700; /* Gold line */
+        border-top: 2px solid #ffd700;
         width: 100%;
       }
 
@@ -137,7 +134,7 @@
         font-size: 1rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
-        color: #ffd700; /* Gold */
+        color: #ffd700;
       }
 
       /* Links */
@@ -153,7 +150,7 @@
       }
 
       footer .links a:hover {
-        color: #ffd700; /* Gold hover */
+        color: #ffd700;
       }
 
       /* Social Icons */
@@ -192,17 +189,6 @@
           margin: 6px 0;
         }
       }
-      .font-theatre{
-        font-family: "Archivo Black", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-      }
-      .text-white{
-        font-size: 20px;    
-        font-family: "Pacifico", cursive;
-        font-weight: 400;
-        font-style: normal;
-      }
     </style>
   </head>
   <body class="bg-pattern min-h-screen">
@@ -212,7 +198,9 @@
       </div>
       <nav class="flex flex-col space-y-4">
         <a href="index.html" class="text-white text-lg font-semibold">Home</a>
-        <a href="ticket prices.html" class="text-white text-lg font-semibold">Tickets</a>
+        <a href="ticket prices.html" class="text-white text-lg font-semibold"
+          >Tickets</a
+        >
         <a href="#" class="text-white text-lg font-semibold">Productions</a>
         <button
           class="bg-white text-black px-4 py-2 rounded-full font-semibold mt-4 hover:bg-gray-200 transition-colors duration-200"
@@ -227,10 +215,14 @@
         <header class="flex justify-between items-center mb-16">
           <div class="text-xl font-bold text-white">Blacklife Production</div>
           <nav class="hidden md:flex items-center space-x-8 text-gray-400">
-            <a href="index.html" class="hover:text-white transition-colors duration-200"
+            <a
+              href="index.html"
+              class="hover:text-white transition-colors duration-200"
               >Home</a
             >
-            <a href="ticket prices.html" class="hover:text-white transition-colors duration-200"
+            <a
+              href="ticket prices.html"
+              class="hover:text-white transition-colors duration-200"
               >Tickets</a
             >
             <a href="#" class="hover:text-white transition-colors duration-200"
@@ -253,11 +245,10 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div class="space-y-6">
             <p
-              class="font-theatre text-3xl sm:text-4xl font-bold"
+              class="font-theatre text-4xl font-bold"
               style="
                 color: #ffd700;
                 text-shadow: 0 0 5px #ffd700;
-                font-size: 50px;
               "
             >
               Blacklife Production
@@ -268,16 +259,19 @@
               Where Art Meets Life
             </h1>
             <p class="text-gray-400 text-lg">
-              <B style="color:gold;">VISION</B><Br>
-              To be a leading arts platform that inspires creativity, uplifts communities, and transforms lives through impactful storytelling and performance.<br>
-              <B  style="color:gold;">MISSION</B><br>
-              Black Life Production exists to nurture talent, promote positive values, and create powerful artistic works that educate, inspire, and bring hope to society.
+              <b style="color: gold">VISION</b><br />
+              To be a leading arts platform that inspires creativity, uplifts
+              communities, and transforms lives through impactful storytelling
+              and performance.<br />
+              <b style="color: gold">MISSION</b><br />
+              Black Life Production exists to nurture talent, promote positive
+              values, and create powerful artistic works that educate, inspire,
+              and bring hope to society.
             </p>
-           
           </div>
 
           <div class="relative flex justify-center md:justify-end">
-            <div class="relative w-80 h-96 md:w-full md:h-full max-w-lg">
+            <div class="relative w-full">
               <div
                 class="absolute w-64 h-64 bg-yellow-500 rounded-full blur-3xl opacity-50 -top-10 -right-10 transform circle-animation-1"
               ></div>
@@ -290,7 +284,10 @@
               <img
                 src="WhatsApp Image 2025-09-09 at 4.43.55 PM-Photoroom.png"
                 alt="A scene from a Blacklife Production play"
-                class="relative z-10 w-full h-auto rounded-xl"
+                class="relative z-10 w-full rounded-xl"
+                loading="lazy"
+                decoding="async"
+                onerror="this.src='https://placehold.co/800x600/222222/555555?text=Image+Loading+Error';"
               />
             </div>
           </div>
@@ -317,118 +314,130 @@
           </div>
         </div>
 
-        <div class="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div class="grid grid-cols-2 gap-4">
+        <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <img
               src="WhatsApp Image 2025-09-09 at 5.04.22 PM.jpeg"
               alt="Production 1"
-              class="rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+              class="w-full aspect-video rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+              loading="lazy"
+              decoding="async"
+              onerror="this.src='https://placehold.co/800x600/222222/555555?text=Image+1+Missing';"
             />
             <img
               src="WhatsApp Image 2025-09-09 at 5.04.27 PM.jpeg"
               alt="Production 2"
-              class="rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer mt-4 lg:mt-12"
+              class="w-full aspect-video rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer mt-4 lg:mt-12"
+              loading="lazy"
+              decoding="async"
+              onerror="this.src='https://placehold.co/800x600/222222/555555?text=Image+2+Missing';"
             />
             <img
               src="WhatsApp Image 2025-09-09 at 5.04.47 PM (1).jpeg"
               alt="Production 3"
-              class="rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+              class="w-full aspect-video rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+              loading="lazy"
+              decoding="async"
+              onerror="this.src='https://placehold.co/800x600/222222/555555?text=Image+3+Missing';"
             />
             <img
               src="WhatsApp Image 2025-09-09 at 5.04.13 PM.jpeg"
               alt="Production 4"
-              class="rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer mt-4 lg:mt-12"
+              class="w-full aspect-video rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer mt-4 lg:mt-12"
+              loading="lazy"
+              decoding="async"
+              onerror="this.src='https://placehold.co/800x600/222222/555555?text=Image+4+Missing';"
             />
           </div>
-
-         
         </div>
       </div>
     </div>
 
     <footer>
-      <h3>Blacklife Production</h3>
+      <div class="container mx-auto px-4 py-8">
+        <h3>Blacklife Production</h3>
 
-      <div class="links">
-        <a href="index.html">Home</a>
-        <a href="ticket prices.html">Tickets</a>
-        <a href="#">Productions</a>
-      </div>
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="ticket prices.html">Tickets</a>
+          <a href="#">Productions</a>
+        </div>
 
-      <div class="socials">
-        <a href="#">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 
-          9.128 8.438 9.873v-6.985h-2.54V12h2.54V9.797c0-2.505 
-          1.492-3.89 3.777-3.89 1.094 0 2.238.195 
-          2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 
-          1.562V12h2.773l-.443 2.895h-2.33V22C18.343 
-          21.128 22 16.991 22 12z"
-            />
-          </svg>
-        </a>
+        <div class="socials">
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 
+            9.128 8.438 9.873v-6.985h-2.54V12h2.54V9.797c0-2.505 
+            1.492-3.89 3.777-3.89 1.094 0 2.238.195 
+            2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 
+            1.562V12h2.773l-.443 2.895h-2.33V22C18.343 
+            21.128 22 16.991 22 12z"
+              />
+            </svg>
+          </a>
 
-        <a href="#">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 2.163c3.204 0 3.584.012 
-          4.85.07 3.252.148 4.772 1.624 
-          4.907 4.91.058 1.265.07 
-          1.645.07 4.849 0 3.204-.012 
-          3.584-.07 4.85-.135 3.251-1.611 
-          4.771-4.91 4.906-1.266.058-1.644.07-4.85.07s-3.583-.012-4.85-.07c-3.252-.134-4.772-1.61-4.91-4.91C2.174 
-          15.647 2.162 15.268 2.162 12c0-3.259.014-3.668.072-4.948.2-4.358 
-          2.618-6.78 6.98-6.98C8.332 2.176 
-          8.741 2.163 12 2.163zm0 
-          1.837c-3.18 0-3.557.012-4.808.07-2.707.123-3.96 
-          1.376-4.083 4.083-.058 1.251-.07 
-          1.628-.07 4.808s.012 3.557.07 
-          4.808c.123 2.707 1.376 3.96 4.083 
-          4.083 1.251.058 1.628.07 4.808.07s3.557-.012 
-          4.808-.07c2.707-.123 3.96-1.376 
-          4.083-4.083.058-1.251.07-1.628.07-4.808s-.012-3.557-.07-4.808c-.123-2.707-1.376-3.96-4.083-4.083-1.251-.058-1.628-.07-4.808-.07zm0 
-          3.905a4.095 4.095 0 1 1 0 
-          8.19 4.095 4.095 0 0 1 0-8.19zm0 
-          6.753a2.658 2.658 0 1 0 0-5.316 
-          2.658 2.658 0 0 0 0 5.316zm4.406-7.845a.96.96 
-          0 1 1 0-1.92.96.96 0 0 1 0 1.92z"
-            />
-          </svg>
-        </a>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2.163c3.204 0 3.584.012 
+            4.85.07 3.252.148 4.772 1.624 
+            4.907 4.91.058 1.265.07 
+            1.645.07 4.849 0 3.204-.012 
+            3.584-.07 4.85-.135 3.251-1.611 
+            4.771-4.91 4.906-1.266.058-1.644.07-4.85.07s-3.583-.012-4.85-.07c-3.252-.134-4.772-1.61-4.91-4.91C2.174 
+            15.647 2.162 15.268 2.162 12c0-3.259.014-3.668.072-4.948.2-4.358 
+            2.618-6.78 6.98-6.98C8.332 2.176 
+            8.741 2.163 12 2.163zm0 
+            1.837c-3.18 0-3.557.012-4.808.07-2.707.123-3.96 
+            1.376-4.083 4.083-.058 1.251-.07 
+            1.628-.07 4.808s.012 3.557.07 
+            4.808c.123 2.707 1.376 3.96 4.083 
+            4.083 1.251.058 1.628.07 4.808.07s3.557-.012 
+            4.808-.07c2.707-.123 3.96-1.376 
+            4.083-4.083.058-1.251.07-1.628.07-4.808s-.012-3.557-.07-4.808c-.123-2.707-1.376-3.96-4.083-4.083-1.251-.058-1.628-.07-4.808-.07zm0 
+            3.905a4.095 4.095 0 1 1 0 
+            8.19 4.095 4.095 0 0 1 0-8.19zm0 
+            6.753a2.658 2.658 0 1 0 0-5.316 
+            2.658 2.658 0 0 0 0 5.316zm4.406-7.845a.96.96 
+            0 1 1 0-1.92.96.96 0 0 1 0 1.92z"
+              />
+            </svg>
+          </a>
 
-        <a href="#">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19.615 3.184c-3.328-.868-6.864-.868-10.192 
-          0C6.046 3.992 4 6.002 4 8.798v6.404c0 2.796 
-          2.046 4.806 5.423 5.614 3.328.868 6.864.868 
-          10.192 0 3.377-.808 5.423-2.818 
-          5.423-5.614V8.798c0-2.796-2.046-4.806-5.423-5.614zM12 
-          17.026c-2.772 0-5.026-2.254-5.026-5.026S9.228 6.974 
-          12 6.974s5.026 2.254 5.026 5.026-2.254 
-          5.026-5.026 5.026zm-1.874-7.554L15.3 
-          12l-5.174 3.528V9.472z"
-            />
-          </svg>
-        </a>
-      </div>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.615 3.184c-3.328-.868-6.864-.868-10.192 
+            0C6.046 3.992 4 6.002 4 8.798v6.404c0 2.796 
+            2.046 4.806 5.423 5.614 3.328.868 6.864.868 
+            10.192 0 3.377-.808 5.423-2.818 
+            5.423-5.614V8.798c0-2.796-2.046-4.806-5.423-5.614zM12 
+            17.026c-2.772 0-5.026-2.254-5.026-5.026S9.228 6.974 
+            12 6.974s5.026 2.254 5.026 5.026-2.254 
+            5.026-5.026 5.026zm-1.874-7.554L15.3 
+            12l-5.174 3.528V9.472z"
+              />
+            </svg>
+          </a>
+        </div>
 
-      <div class="copyright">
-        &copy; 2024 <span style="color: #ffd700">Blacklife Production</span>.
-        All Rights Reserved.
+        <div class="copyright">
+          &copy; 2024 <span style="color: #ffd700">Blacklife Production</span>.
+          All Rights Reserved.
+        </div>
       </div>
     </footer>
 
