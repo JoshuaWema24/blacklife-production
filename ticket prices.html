@@ -226,21 +226,35 @@
         <hr class="border-t border-gray-700 my-8" />
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Couples or Group Ticket Card -->
-          <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105">
-            <img
-              src="https://placehold.co/400x300/ffd700/111?text=Couples+Ticket"
-              alt="Couples Ticket"
-              class="rounded-xl w-full h-48 object-cover mb-4"
-              loading="lazy"
-              decoding="async"
-              onerror="this.src='https://placehold.co/400x300/222222/555555?text=Image+Missing';"
-            />
+          <div
+            class="group glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="flex items-center space-x-2 w-full mb-4 transition-transform duration-300 group-hover:scale-105"
+            >
+              <img
+                src="https://placehold.co/200x200/ffd700/111?text=Couples+1"
+                alt="Couples Ticket Image 1"
+                class="rounded-xl w-1/2 aspect-square object-cover"
+                loading="lazy"
+                decoding="async"
+                onerror="this.src='https://placehold.co/200x200/222222/555555?text=Img+1';"
+              />
+              <img
+                src="https://placehold.co/200x200/ffd700/111?text=Couples+2"
+                alt="Couples Ticket Image 2"
+                class="rounded-xl w-1/2 aspect-square object-cover"
+                loading="lazy"
+                decoding="async"
+                onerror="this.src='https://placehold.co/200x200/222222/555555?text=Img+2';"
+              />
+            </div>
             <h2 class="text-2xl font-bold text-white mb-2">
               Couples or Group of two Seating
             </h2>
             <p class="text-gray-400 text-sm mb-4 flex-grow">
               Perfect for two! Enjoy the show with a loved one from premium
-              seating. Includes a complimentary drink each with a backstage pass.
+              seating. Includes a complimentary drink each with a backstage pass, a free pair of shirts and wrist bands.
             </p>
             <div class="mt-auto">
               <span
@@ -258,19 +272,33 @@
           </div>
 
           <!-- VIP Ticket Card -->
-          <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105">
-            <img
-              src="https://placehold.co/400x300/ffd700/111?text=VIP+Pass"
-              alt="VIP Ticket"
-              class="rounded-xl w-full h-48 object-cover mb-4"
-              loading="lazy"
-              decoding="async"
-              onerror="this.src='https://placehold.co/400x300/222222/555555?text=Image+Missing';"
-            />
+          <div
+            class="group glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="flex items-center space-x-2 w-full mb-4 transition-transform duration-300 group-hover:scale-105"
+            >
+              <img
+                src="blacklife white tshirt.jpg"
+                alt="VIP Ticket Image 1"
+                class="rounded-xl w-1/2 aspect-square object-cover"
+                loading="lazy"
+                decoding="async"
+                onerror="this.src='https://placehold.co/200x200/222222/555555?text=Img+1';"
+              />
+              <img
+                src="blacklife black t-shirt.jpg"
+                alt="VIP Ticket Image 2"
+                class="rounded-xl w-1/2 aspect-square object-cover"
+                loading="lazy"
+                decoding="async"
+                onerror="this.src='https://placehold.co/200x200/222222/555555?text=Img+2';"
+              />
+            </div>
             <h2 class="text-2xl font-bold text-white mb-2">VIP Seating</h2>
             <p class="text-gray-400 text-sm mb-4 flex-grow">
               Experience the event from the best seats in the house. Includes a
-              backstage pass and complimentary refreshments.
+              backstage pass, complimentary refreshments and a free T-shirt and a wrist band.
             </p>
             <div class="mt-auto">
               <span
@@ -288,19 +316,25 @@
           </div>
 
           <!-- Standard Ticket Card -->
-          <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105">
-            <img
-              src="https://placehold.co/400x300/3b82f6/111?text=Standard+Ticket"
-              alt="Standard Ticket"
-              class="rounded-xl w-full h-48 object-cover mb-4"
-              loading="lazy"
-              decoding="async"
-              onerror="this.src='https://placehold.co/400x300/222222/555555?text=Image+Missing';"
-            />
+          <div
+            class="group glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="flex items-center space-x-2 w-full mb-4 transition-transform duration-300 group-hover:scale-105"
+            >
+              <img
+                src="blacklife wrist band.jpg"
+                alt="Standard Ticket Image 1"
+                class="rounded-xl w-1/2 aspect-square object-cover"
+                loading="lazy"
+                decoding="async"
+                onerror="this.src='https://placehold.co/200x200/222222/555555?text=Img+1';"
+              />
+            </div>
             <h2 class="text-2xl font-bold text-white mb-2">Standard Seating</h2>
             <p class="text-gray-400 text-sm mb-4 flex-grow">
               Enjoy the show with comfortable seating in the main section. A
-              great way to experience the event.
+              great way to experience the event, it also comes with a free wrist band.
             </p>
             <div class="mt-auto">
               <span
@@ -318,19 +352,24 @@
           </div>
 
           <!-- Student Ticket Card -->
-          <div class="glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105">
-            <img
-              src="https://placehold.co/400x300/f59e0b/111?text=Student+Ticket"
-              alt="Student Ticket"
-              class="rounded-xl w-full h-48 object-cover mb-4"
-              loading="lazy"
-              decoding="async"
-              onerror="this.src='https://placehold.co/400x300/222222/555555?text=Image+Missing';"
-            />
+          <div
+            class="group glassmorphism p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="flex items-center space-x-2 w-full mb-4 transition-transform duration-300 group-hover:scale-105"
+            >
+              <img
+                src="blacklife wrist band.jpg"
+                alt="Student Ticket Image 1"
+                class="rounded-xl w-1/2 aspect-square object-cover"
+                loading="lazy"
+                decoding="async"
+                onerror="this.src='https://placehold.co/200x200/222222/555555?text=Img+1';"
+              />
+            </div>
             <h2 class="text-2xl font-bold text-white mb-2">Student Seating</h2>
             <p class="text-gray-400 text-sm mb-4 flex-grow">
-              A discounted option for students. Please present a valid student
-              ID at the entrance for verification.
+              A discounted option for students. Comes with a free wrist band.
             </p>
             <div class="mt-auto">
               <span
@@ -351,10 +390,20 @@
     </div>
     
     <!-- Purchase Message Box -->
-    <div id="purchase-message" class="glassmorphism p-6 rounded-xl text-center">
+    <div
+      id="purchase-message"
+      class="glassmorphism p-6 rounded-xl text-center"
+    >
       <p class="text-xl text-white mb-4">Thank you for your purchase!</p>
-      <p class="text-gray-400">A <span id="purchased-ticket-type" class="text-yellow-500 font-bold"></span> ticket has been added to your cart.</p>
-      <button id="close-message" class="mt-6 px-6 py-2 rounded-full bg-yellow-500 text-black font-semibold hover:bg-yellow-600 transition-colors">
+      <p class="text-gray-400">
+        A
+        <span id="purchased-ticket-type" class="text-yellow-500 font-bold"></span>
+        ticket has been added to your cart.
+      </p>
+      <button
+        id="close-message"
+        class="mt-6 px-6 py-2 rounded-full bg-yellow-500 text-black font-semibold hover:bg-yellow-600 transition-colors"
+      >
         Close
       </button>
     </div>
@@ -409,8 +458,9 @@
         </div>
 
         <div class="copyright">
-          &copy; 2024 <span style="color: #ffd700">Blacklife Production</span>.
-          All Rights Reserved.
+          &copy; 2024
+          <span style="color: #ffd700">Blacklife Production</span>. All Rights
+          Reserved.
         </div>
       </div>
     </footer>
@@ -422,7 +472,9 @@
       const buyBtns = document.querySelectorAll(".buy-btn");
       const purchaseMessage = document.getElementById("purchase-message");
       const closeMessageBtn = document.getElementById("close-message");
-      const purchasedTicketType = document.getElementById("purchased-ticket-type");
+      const purchasedTicketType = document.getElementById(
+        "purchased-ticket-type"
+      );
 
       // Sidebar functionality
       openMenuBtn.addEventListener("click", () => {
@@ -434,7 +486,7 @@
       });
 
       // Buy button functionality
-      buyBtns.forEach(button => {
+      buyBtns.forEach((button) => {
         button.addEventListener("click", () => {
           const ticketType = button.dataset.ticketType;
           purchasedTicketType.textContent = ticketType;
