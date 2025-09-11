@@ -39,15 +39,6 @@
         border-radius: 1rem;
       }
 
-      .dropdown-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease-in-out;
-      }
-      .dropdown-content.open {
-        max-height: 200px;
-      }
-      
       .radio-label {
         transition: background-color 0.2s;
       }
@@ -59,71 +50,217 @@
   <body class="bg-pattern min-h-screen flex items-center justify-center">
     <div class="container mx-auto px-4 py-8 md:py-16">
       <div class="flex justify-center">
-        <div class="glassmorphism p-8 rounded-xl shadow-lg w-full max-w-xl text-center">
+        <div
+          class="glassmorphism p-8 rounded-xl shadow-lg w-full max-w-xl text-center"
+        >
           <h1 class="text-white text-3xl font-bold mb-4" id="event-title"></h1>
           <p class="text-gray-400 mb-8">
             Select your preferred ticket type and confirm your purchase.
           </p>
-          
-          <!-- User Information Form -->
+
           <div class="text-left mb-6 space-y-4">
             <div>
-              <label for="first-name" class="block text-sm text-gray-400 mb-2">First Name</label>
-              <input type="text" id="first-name" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600" placeholder="First Name">
+              <label for="first-name" class="block text-sm text-gray-400 mb-2"
+                >First Name</label
+              >
+              <input
+                type="text"
+                id="first-name"
+                class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+                placeholder="First Name"
+              />
             </div>
             <div>
-              <label for="last-name" class="block text-sm text-gray-400 mb-2">Last Name</label>
-              <input type="text" id="last-name" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600" placeholder="Last Name">
+              <label for="last-name" class="block text-sm text-gray-400 mb-2"
+                >Last Name</label
+              >
+              <input
+                type="text"
+                id="last-name"
+                class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+                placeholder="Last Name"
+              />
             </div>
             <div>
-              <label for="id-number" class="block text-sm text-gray-400 mb-2">National ID Number</label>
-              <input type="text" id="id-number" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600" placeholder="ID Number">
+              <label for="id-number" class="block text-sm text-gray-400 mb-2"
+                >National ID Number</label
+              >
+              <input
+                type="text"
+                id="id-number"
+                class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+                placeholder="ID Number"
+              />
             </div>
             <div>
-              <label for="phone-number" class="block text-sm text-gray-400 mb-2">Phone Number for Payment</label>
-              <input type="text" id="phone-number" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600" placeholder="e.g., 254712345678">
+              <label for="phone-number" class="block text-sm text-gray-400 mb-2"
+                >Phone Number for Payment</label
+              >
+              <input
+                type="text"
+                id="phone-number"
+                class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+                placeholder="e.g., 254712345678"
+              />
             </div>
           </div>
 
-          <!-- Ticket Selection -->
           <div class="text-left mb-6">
             <h4 class="text-lg text-gray-300 mb-4">Ticket Prices:</h4>
             <div class="space-y-4">
-              <!-- Ticket Option 1 -->
               <div>
-                <input type="radio" id="standard" name="ticket-type" value="25.00" class="hidden" data-label="Standard (Adult)">
-                <label for="standard" class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200">
-                  <span class="text-white">Standard (Adult)</span>
-                  <span class="text-white font-bold">$25.00</span>
+                <input
+                  type="radio"
+                  id="standard"
+                  name="ticket-type"
+                  value="500"
+                  class="hidden"
+                  data-label="Standard"
+                />
+                <label
+                  for="standard"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
+                  <span class="text-white">Standard</span>
+                  <span class="text-white font-bold">Ksh 500</span>
                 </label>
               </div>
 
-              <!-- Ticket Option 2 -->
               <div>
-                <input type="radio" id="student" name="ticket-type" value="15.00" class="hidden" data-label="Student (with ID)">
-                <label for="student" class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200">
-                  <span class="text-white">Student (with ID)</span>
-                  <span class="text-white font-bold">$15.00</span>
+                <input
+                  type="radio"
+                  id="student"
+                  name="ticket-type"
+                  value="200"
+                  class="hidden"
+                  data-label="Student (with ID)"
+                />
+                <label
+                  for="student"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
+                  <span class="text-white">Student</span>
+                  <span class="text-white font-bold">Ksh 200</span>
                 </label>
               </div>
 
-              <!-- Ticket Option 3 -->
               <div>
-                <input type="radio" id="vip" name="ticket-type" value="50.00" class="hidden" data-label="VIP Seating">
-                <label for="vip" class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200">
+                <input
+                  type="radio"
+                  id="vip"
+                  name="ticket-type"
+                  value="1500"
+                  class="hidden"
+                  data-label="VIP Seating"
+                />
+                <label
+                  for="vip"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
                   <span class="text-white">VIP Seating</span>
-                  <span class="text-white font-bold">$50.00</span>
+                  <span class="text-white font-bold">Ksh 1500</span>
+                </label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  id="couples-group"
+                  name="ticket-type"
+                  value="2500"
+                  class="hidden"
+                  data-label="Couples or Group of two"
+                />
+                <label
+                  for="couples-group"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
+                  <span class="text-white">Couples or Group of two</span>
+                  <span class="text-white font-bold">Ksh 2500</span>
                 </label>
               </div>
             </div>
-            
-            <p class="text-white mt-6 text-center text-xl font-bold">
-              Selected Ticket: <span id="selected-ticket-label" class="font-normal text-yellow-500">None</span>
-              <br>
-              Total: <span id="total-price" class="text-yellow-500">$0.00</span>
-            </p>
           </div>
           
+          <div id="tshirt-size-section" class="text-left mb-6 hidden">
+            <h4 class="text-lg text-gray-300 mb-4">T-Shirt Size(free):</h4>
+            <div class="space-y-4">
+              <div>
+                <input
+                  type="radio"
+                  id="size-small"
+                  name="tshirt-size"
+                  value="Small"
+                  class="hidden"
+                />
+                <label
+                  for="size-small"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
+                  <span class="text-white">Small</span>
+                </label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  id="size-medium"
+                  name="tshirt-size"
+                  value="Medium"
+                  class="hidden"
+                />
+                <label
+                  for="size-medium"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
+                  <span class="text-white">Medium</span>
+                </label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  id="size-large"
+                  name="tshirt-size"
+                  value="Large"
+                  class="hidden"
+                />
+                <label
+                  for="size-large"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
+                  <span class="text-white">Large</span>
+                </label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  id="size-xlarge"
+                  name="tshirt-size"
+                  value="Extra Large"
+                  class="hidden"
+                />
+                <label
+                  for="size-xlarge"
+                  class="radio-label flex justify-between items-center p-4 rounded-lg cursor-pointer border border-transparent hover:border-yellow-600 transition-colors duration-200"
+                >
+                  <span class="text-white">Extra Large</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-white mt-6 text-center text-xl font-bold">
+            Selected Ticket:
+            <span id="selected-ticket-label" class="font-normal text-yellow-500"
+              >None</span
+            >
+            <br />
+            Total:
+            <span id="total-price" class="text-yellow-500">Ksh 0</span>
+          </p>
+
           <button
             id="pay-now-button"
             class="w-full bg-gradient-to-br from-yellow-600 to-yellow-800 text-white px-6 py-3 rounded-full font-bold shadow-lg transform transition-transform duration-200 hover:scale-105"
@@ -142,8 +279,14 @@
         }
 
         const payNowBtn = document.getElementById("pay-now-button");
-        const ticketOptions = document.querySelectorAll('input[name="ticket-type"]');
-        const selectedTicketLabel = document.getElementById("selected-ticket-label");
+        const ticketOptions = document.querySelectorAll(
+          'input[name="ticket-type"]'
+        );
+        const tshirtSizeSection = document.getElementById("tshirt-size-section");
+        const tshirtSizeOptions = document.querySelectorAll('input[name="tshirt-size"]');
+        const selectedTicketLabel = document.getElementById(
+          "selected-ticket-label"
+        );
         const totalPrice = document.getElementById("total-price");
         const firstNameInput = document.getElementById("first-name");
         const lastNameInput = document.getElementById("last-name");
@@ -152,20 +295,39 @@
 
         let selectedPrice = 0;
         let ticketLabel = "";
+        let tshirtSize = "";
 
-        // Update selected ticket
-        ticketOptions.forEach(radio => {
-          radio.addEventListener('change', (event) => {
+        // Update selected ticket and conditionally show T-shirt section
+        ticketOptions.forEach((radio) => {
+          radio.addEventListener("change", (event) => {
             selectedPrice = parseFloat(event.target.value);
             ticketLabel = event.target.getAttribute("data-label");
             selectedTicketLabel.textContent = ticketLabel;
-            totalPrice.textContent = `$${selectedPrice.toFixed(2)}`;
+            totalPrice.textContent = `Ksh ${selectedPrice.toFixed(0)}`;
+
+            const isVipOrCouples =
+              event.target.id === "vip" || event.target.id === "couples-group";
+            if (isVipOrCouples) {
+              tshirtSizeSection.classList.remove("hidden");
+            } else {
+              tshirtSizeSection.classList.add("hidden");
+              // Uncheck any previously selected T-shirt size
+              tshirtSizeOptions.forEach(sizeRadio => sizeRadio.checked = false);
+              tshirtSize = ""; // Reset the size
+            }
+          });
+        });
+
+        // Update selected T-shirt size
+        tshirtSizeOptions.forEach((radio) => {
+          radio.addEventListener("change", (event) => {
+            tshirtSize = event.target.value;
           });
         });
 
         // Function to create and show a message box
         const showMessageBox = (message) => {
-          const messageBox = document.createElement('div');
+          const messageBox = document.createElement("div");
           messageBox.innerHTML = `
             <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-4">
               <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-white max-w-sm w-full">
@@ -188,20 +350,37 @@
             showMessageBox("Please select a ticket type first.");
             return;
           }
-          if (firstNameInput.value.trim() === "" || lastNameInput.value.trim() === "" || idNumberInput.value.trim() === "") {
+          const isVipOrCouples = document.getElementById("vip").checked || document.getElementById("couples-group").checked;
+          if (isVipOrCouples && !tshirtSize) {
+             showMessageBox("Please select a T-shirt size.");
+             return;
+          }
+          if (
+            firstNameInput.value.trim() === "" ||
+            lastNameInput.value.trim() === "" ||
+            idNumberInput.value.trim() === ""
+          ) {
             showMessageBox("Please fill in all personal details.");
             return;
           }
           if (!phoneNumber.startsWith("254") || phoneNumber.length < 12) {
-            showMessageBox("Please enter a valid phone number starting with '254'.");
+            showMessageBox(
+              "Please enter a valid phone number starting with '254'."
+            );
             return;
           }
 
           // Payment initiation logic (Simulated for this example)
           // In a real application, this would call a backend service.
-          console.log(`Payment initiated for ${ticketLabel} ticket at $${selectedPrice.toFixed(2)} to phone number ${phoneNumber}.`);
-          showMessageBox("Payment request sent! Check your phone to complete the payment.");
-          
+          console.log(
+            `Payment initiated for ${ticketLabel} ticket and T-shirt size ${tshirtSize} at Ksh ${selectedPrice.toFixed(
+              0
+            )} to phone number ${phoneNumber}.`
+          );
+          showMessageBox(
+            "Payment request sent! Check your phone to complete the payment."
+          );
+
           // You would typically make a real API call here, e.g.:
           /*
           try {
@@ -213,7 +392,8 @@
                 phone: phoneNumber,
                 firstName: firstNameInput.value.trim(),
                 lastName: lastNameInput.value.trim(),
-                idNumber: idNumberInput.value.trim()
+                idNumber: idNumberInput.value.trim(),
+                tshirtSize: tshirtSize
               }),
             });
             const data = await response.json();
