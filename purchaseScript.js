@@ -95,6 +95,20 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('input[name="tshirt-color"]').forEach((radio) => {
     radio.addEventListener("change", (event) => {
       tshirtColor = event.target.value;
+
+      // ✅ Highlight selected label
+      document
+        .querySelectorAll('label[for^="color-"]')
+        .forEach((label) =>
+          label.classList.remove("border-yellow-600", "bg-gray-700")
+        );
+
+      const selectedLabel = document.querySelector(
+        `label[for="${event.target.id}"]`
+      );
+      if (selectedLabel) {
+        selectedLabel.classList.add("border-yellow-600", "bg-gray-700");
+      }
     });
   });
 
