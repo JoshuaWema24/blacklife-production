@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalPrice = document.getElementById("total-price");
 
   // ✅ Updated inputs
-  const referredByInput = document.getElementById("Referred-by");
+const referredByInput = document.getElementById("referred-by");
   const lastNameInput = document.getElementById("last-name");
   const idNumberInput = document.getElementById("id-number");
   const phoneInput = document.getElementById("phone-number");
