@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: #111;
+        color: #ccc;
+      }
+      .bg-pattern {
+        background-image: radial-gradient(
+            circle at 10% 10%,
+            #222 1px,
+            transparent 1px
+          ),
+          radial-gradient(circle at 90% 90%, #222 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .glassmorphism {
+        background-color: rgba(30, 30, 30, 0.5);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+      }
+      .sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(10px);
+        background-color: rgba(17, 17, 17, 0.8);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .tab-btn {
+        @apply py-2 px-4 rounded-full font-bold text-sm transition-colors duration-200;
+      }
+      .tab-btn.active {
+        @apply bg-yellow-600 text-white;
+      }
+      .tab-btn.inactive {
+        @apply bg-gray-700 hover:bg-yellow-600 text-white;
+      }
+    </style>
+  </head>
+  <body class="bg-pattern min-h-screen">
+    <header class="sticky-header py-4">
+      <div class="container mx-auto px-4">
+        <nav class="flex justify-between items-center">
+          <a href="#" class="text-white text-xl font-bold">
+            <span class="text-yellow-500">Event</span> Admin
+          </a>
+          <div class="flex items-center gap-4">
+            <button id="dashboard-btn" class="tab-btn">
+              Dashboard
+            </button>
+            <button id="report-btn" class="tab-btn">
+              Reports
+            </button>
+            <button id="events-btn" class="tab-btn">
+              Events
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container mx-auto p-4 sm:p-8">
+      <div class="glassmorphism p-6 sm:p-8 rounded-xl shadow-lg">
+        <h1 id="view-title" class="text-white text-2xl sm:text-3xl font-bold mb-6">
+          Dashboard Overview
+        </h1>
+        
+        <div id="app-content">
+          <div id="dashboard-view">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
+                <p class="text-sm text-gray-400">Total Tickets Sold</p>
+                <p id="total-tickets" class="text-white text-3xl font-bold mt-2">0</p>
+              </div>
+              <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
+                <p class="text-sm text-gray-400">Total Revenue</p>
+                <p id="total-revenue" class="text-white text-3xl font-bold mt-2">Ksh 0</p>
+              </div>
+              <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
+                <p class="text-sm text-gray-400">VIP Tickets Sold</p>
+                <p id="vip-tickets" class="text-white text-3xl font-bold mt-2">0</p>
+              </div>
+            </div>
+
+            <h2 class="text-white text-xl font-bold mb-4">Latest Purchases</h2>
+            <div class="overflow-x-auto rounded-lg border border-gray-700">
+              <table class="min-w-full divide-y divide-gray-700">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Name</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Ticket</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">T-Shirt</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Phone</th>
+                  </tr>
+                </thead>
+                <tbody id="latest-purchases-table-body" class="bg-gray-900 divide-y divide-gray-700">
+                  </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="reports-view" class="hidden">
+            <div class="flex flex-col sm:flex-row justify-between items-center mb-6">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search by name or ID..."
+                class="w-full sm:w-2/3 p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600 mb-4 sm:mb-0"
+              />
+              <button
+                id="download-pdf-btn"
+                class="w-full sm:w-1/3 sm:ml-4 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded-full transition-colors duration-200"
+              >
+                Download PDF Report
+              </button>
+            </div>
+            
+            <div class="overflow-x-auto rounded-lg border border-gray-700">
+              <table class="min-w-full divide-y divide-gray-700">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Name</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Ticket Type</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">T-Shirt Size</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">ID Number</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Phone Number</th>
+                  </tr>
+                </thead>
+                <tbody id="all-tickets-table-body" class="bg-gray-900 divide-y divide-gray-700">
+                  </tbody>
+              </table>
+            </div>
+            <p id="no-results" class="text-center text-gray-500 mt-4 hidden">
+              No results found.
+            </p>
+          </div>
+
+          <div id="events-view" class="hidden">
+            <h2 class="text-white text-xl font-bold mb-4">Add a New Event</h2>
+            <form id="add-event-form" class="space-y-4 text-left">
+              <div>
+                <label for="event-title" class="block text-sm text-gray-400 mb-2">Event Title</label>
+                <input type="text" id="event-title" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600" placeholder="e.g., The Big Concert" required />
+              </div>
+              <div>
+                <label for="event-description" class="block text-sm text-gray-400 mb-2">Description</label>
+                <textarea id="event-description" rows="4" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600" placeholder="A brief summary of the event..."></textarea>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="event-date" class="block text-sm text-gray-400 mb-2">Event Date</label>
+                  <input type="date" id="event-date" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600" required />
+                </div>
+                <div>
+                  <label for="event-location" class="block text-sm text-gray-400 mb-2">Location</label>
+                  <input type="text" id="event-location" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-600" placeholder="e.g., Nairobi Arena" required />
+                </div>
+              </div>
+              <div>
+                <label for="event-image" class="block text-sm text-gray-400 mb-2">Event Image</label>
+                <input type="file" id="event-image" accept="image/*" class="w-full text-gray-400 bg-gray-800 border border-gray-700 rounded-lg p-3 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-yellow-600 file:text-white hover:file:bg-yellow-700 cursor-pointer" />
+              </div>
+              <button type="submit" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded-full transition-colors duration-200">
+                Create Event
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Placeholder data from your backend API
+      const ticketData = [
+        {
+          firstName: "Jane",
+          lastName: "Doe",
+          ticketType: "VIP Seating",
+          tshirtSize: "Large",
+          idNumber: "12345678",
+          phoneNumber: "254712345678",
+          price: 1500,
+        },
+        {
+          firstName: "John",
+          lastName: "Smith",
+          ticketType: "Standard",
+          tshirtSize: "N/A",
+          idNumber: "87654321",
+          phoneNumber: "254787654321",
+          price: 500,
+        },
+        {
+          firstName: "Emily",
+          lastName: "Jones",
+          ticketType: "Student (with ID)",
+          tshirtSize: "N/A",
+          idNumber: "11223344",
+          phoneNumber: "254722334455",
+          price: 200,
+        },
+        {
+          firstName: "Peter",
+          lastName: "Mwangi",
+          ticketType: "Couples or Group of two",
+          tshirtSize: "Medium",
+          idNumber: "99887766",
+          phoneNumber: "254733445566",
+          price: 2500,
+        },
+        {
+          firstName: "Sarah",
+          lastName: "Muthoni",
+          ticketType: "VIP Seating",
+          tshirtSize: "Small",
+          idNumber: "55443322",
+          phoneNumber: "254799887766",
+          price: 1500,
+        },
+      ];
+
+      const dashboardBtn = document.getElementById("dashboard-btn");
+      const reportBtn = document.getElementById("report-btn");
+      const eventsBtn = document.getElementById("events-btn");
+      const viewTitle = document.getElementById("view-title");
+      
+      const dashboardView = document.getElementById("dashboard-view");
+      const reportsView = document.getElementById("reports-view");
+      const eventsView = document.getElementById("events-view");
+
+      const latestPurchasesTableBody = document.getElementById("latest-purchases-table-body");
+      const allTicketsTableBody = document.getElementById("all-tickets-table-body");
+      const searchInput = document.getElementById("search-input");
+      const noResults = document.getElementById("no-results");
+      const downloadBtn = document.getElementById("download-pdf-btn");
+      const addEventForm = document.getElementById("add-event-form");
+
+      // --- Rendering Functions ---
+      function renderDashboard(data) {
+        const totalTickets = data.length;
+        const totalRevenue = data.reduce((sum, ticket) => sum + ticket.price, 0);
+        const vipTickets = data.filter((ticket) => ticket.ticketType.includes("VIP")).length;
+        document.getElementById("total-tickets").textContent = totalTickets;
+        document.getElementById("total-revenue").textContent = `Ksh ${totalRevenue.toLocaleString()}`;
+        document.getElementById("vip-tickets").textContent = vipTickets;
+        latestPurchasesTableBody.innerHTML = "";
+        const latestData = data.slice(0, 5);
+        latestData.forEach((ticket) => {
+          const row = document.createElement("tr");
+          row.className = "hover:bg-gray-700 transition-colors duration-150";
+          row.innerHTML = `
+              <td class="px-4 py-4 text-sm font-medium text-white">${ticket.firstName} ${ticket.lastName}</td>
+              <td class="px-4 py-4 text-sm text-gray-300">${ticket.ticketType}</td>
+              <td class="px-4 py-4 text-sm text-gray-300">${ticket.tshirtSize}</td>
+              <td class="px-4 py-4 text-sm text-gray-300">${ticket.phoneNumber}</td>
+            `;
+          latestPurchasesTableBody.appendChild(row);
+        });
+      }
+
+      function renderReportsTable(data) {
+        allTicketsTableBody.innerHTML = "";
+        if (data.length === 0) {
+          noResults.classList.remove("hidden");
+        } else {
+          noResults.classList.add("hidden");
+          data.forEach((ticket) => {
+            const row = document.createElement("tr");
+            row.className = "hover:bg-gray-700 transition-colors duration-150";
+            row.innerHTML = `
+                <td class="px-4 py-4 text-sm font-medium text-white">${ticket.firstName} ${ticket.lastName}</td>
+                <td class="px-4 py-4 text-sm text-gray-300">${ticket.ticketType}</td>
+                <td class="px-4 py-4 text-sm text-gray-300">${ticket.tshirtSize}</td>
+                <td class="px-4 py-4 text-sm text-gray-300">${ticket.idNumber}</td>
+                <td class="px-4 py-4 text-sm text-gray-300">${ticket.phoneNumber}</td>
+              `;
+            allTicketsTableBody.appendChild(row);
+          });
+        }
+      }
+
+      // --- Event Handlers ---
+      function handleSearch() {
+        const query = searchInput.value.toLowerCase();
+        const filteredData = ticketData.filter(
+          (ticket) =>
+            ticket.firstName.toLowerCase().includes(query) ||
+            ticket.lastName.toLowerCase().includes(query) ||
+            ticket.idNumber.toLowerCase().includes(query)
+        );
+        renderReportsTable(filteredData);
+      }
+      
+      function setActiveTab(activeTabId) {
+          const tabs = [dashboardBtn, reportBtn, eventsBtn];
+          tabs.forEach(tab => {
+              if (tab.id === activeTabId) {
+                  tab.classList.add("active");
+                  tab.classList.remove("inactive");
+              } else {
+                  tab.classList.add("inactive");
+                  tab.classList.remove("active");
+              }
+          });
+      }
+
+      function showDashboard() {
+        dashboardView.classList.remove("hidden");
+        reportsView.classList.add("hidden");
+        eventsView.classList.add("hidden");
+        viewTitle.textContent = "Dashboard Overview";
+        setActiveTab("dashboard-btn");
+        renderDashboard(ticketData);
+      }
+
+      function showReports() {
+        reportsView.classList.remove("hidden");
+        dashboardView.classList.add("hidden");
+        eventsView.classList.add("hidden");
+        viewTitle.textContent = "Ticket Holders Report";
+        setActiveTab("report-btn");
+        renderReportsTable(ticketData);
+      }
+
+      function showEvents() {
+        eventsView.classList.remove("hidden");
+        dashboardView.classList.add("hidden");
+        reportsView.classList.add("hidden");
+        viewTitle.textContent = "Create New Event";
+        setActiveTab("events-btn");
+      }
+      
+      function handleFormSubmit(event) {
+          event.preventDefault();
+          
+          const eventTitle = document.getElementById("event-title").value;
+          const eventDescription = document.getElementById("event-description").value;
+          const eventDate = document.getElementById("event-date").value;
+          const eventLocation = document.getElementById("event-location").value;
+          const eventImage = document.getElementById("event-image").files[0];
+          
+          // Use FormData to send both text fields and the image file
+          const formData = new FormData();
+          formData.append('title', eventTitle);
+          formData.append('description', eventDescription);
+          formData.append('date', eventDate);
+          formData.append('location', eventLocation);
+          
+          if (eventImage) {
+              formData.append('image', eventImage);
+          }
+          
+          console.log("Sending form data to backend:", formData);
+          
+          // In a real application, you would send this data to your backend API
+          // Example of a fetch request:
+          // fetch('/api/events', {
+          //     method: 'POST',
+          //     body: formData // Note: Do not set 'Content-Type' header when using FormData
+          // })
+          // .then(response => response.json())
+          // .then(data => {
+          //     alert('Event created successfully!');
+          //     addEventForm.reset();
+          //     // Optionally, refresh a list of events from the backend
+          // })
+          // .catch(error => console.error('Error:', error));
+          
+          alert('Event data and image are ready to be sent to your backend.');
+          addEventForm.reset();
+      }
+
+      // --- Initialization ---
+      document.addEventListener("DOMContentLoaded", () => {
+        showDashboard();
+      });
+
+      // --- Event Listeners ---
+      dashboardBtn.addEventListener("click", showDashboard);
+      reportBtn.addEventListener("click", showReports);
+      eventsBtn.addEventListener("click", showEvents);
+      searchInput.addEventListener("input", handleSearch);
+      downloadBtn.addEventListener("click", () => {
+        alert("Connecting to backend to generate PDF...");
+      });
+      addEventForm.addEventListener("submit", handleFormSubmit);
+    </script>
+  </body>
+</html>
