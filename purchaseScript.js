@@ -1,10 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const eventName = urlParams.get("event");
-  if (eventName) {
-    document.getElementById("event-title").textContent = eventName;
-  }
-
   const payNowBtn = document.getElementById("pay-now-button");
   const ticketOptions = document.querySelectorAll('input[name="ticket-type"]');
   const tshirtSizeSection = document.getElementById("tshirt-size-section");
@@ -12,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     'input[name="tshirt-size"]'
   );
 
-  // ✅ New: color section
   const tshirtColorSection = document.createElement("div");
   tshirtColorSection.className = "text-left mb-6 hidden";
   tshirtColorSection.innerHTML = `
@@ -30,9 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
           <span class="text-white">White</span>
         </label>
       </div>
-      <div>
-        </label>
-      </div>
     </div>
   `;
   document
@@ -45,8 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectedTicketLabel = document.getElementById("selected-ticket-label");
   const totalPrice = document.getElementById("total-price");
 
-  // ✅ Updated inputs
-const referredByInput = document.getElementById("referred-by");
+  const referredByInput = document.getElementById("referred-by");
   const lastNameInput = document.getElementById("last-name");
   const idNumberInput = document.getElementById("id-number");
   const phoneInput = document.getElementById("phone-number");
@@ -56,7 +45,6 @@ const referredByInput = document.getElementById("referred-by");
   let tshirtSize = "";
   let tshirtColor = "";
 
-  // Update selected ticket
   ticketOptions.forEach((radio) => {
     radio.addEventListener("change", (event) => {
       selectedPrice = parseFloat(event.target.value);
@@ -66,20 +54,16 @@ const referredByInput = document.getElementById("referred-by");
 
       const isVipOrCouples =
         event.target.id === "vip" || event.target.id === "couples-group";
-
       if (isVipOrCouples) {
         tshirtSizeSection.classList.remove("hidden");
         tshirtColorSection.classList.remove("hidden");
       } else {
         tshirtSizeSection.classList.add("hidden");
         tshirtColorSection.classList.add("hidden");
-
-        // reset
         tshirtSizeOptions.forEach((sizeRadio) => (sizeRadio.checked = false));
         document
           .querySelectorAll('input[name="tshirt-color"]')
           .forEach((c) => (c.checked = false));
-
         tshirtSize = "";
         tshirtColor = "";
       }
@@ -95,20 +79,16 @@ const referredByInput = document.getElementById("referred-by");
   document.querySelectorAll('input[name="tshirt-color"]').forEach((radio) => {
     radio.addEventListener("change", (event) => {
       tshirtColor = event.target.value;
-
-      // ✅ Highlight selected label
       document
         .querySelectorAll('label[for^="color-"]')
         .forEach((label) =>
           label.classList.remove("border-yellow-600", "bg-gray-700")
         );
-
       const selectedLabel = document.querySelector(
         `label[for="${event.target.id}"]`
       );
-      if (selectedLabel) {
+      if (selectedLabel)
         selectedLabel.classList.add("border-yellow-600", "bg-gray-700");
-      }
     });
   });
 
@@ -128,80 +108,91 @@ const referredByInput = document.getElementById("referred-by");
   };
 
   payNowBtn.addEventListener("click", async () => {
-  const phoneNumber = phoneInput.value.trim();
+    const phoneNumber = phoneInput.value.trim();
 
-  if (selectedPrice <= 0) {
-    showMessageBox("Please select a ticket type first.");
-    return;
-  }
-
-  const isVipOrCouples =
-    document.getElementById("vip").checked ||
-    document.getElementById("couples-group").checked;
-
-  if (isVipOrCouples && (!tshirtSize || !tshirtColor)) {
-    showMessageBox("Please select a T-shirt size and color.");
-    return;
-  }
-
-  if (lastNameInput.value.trim() === "" || idNumberInput.value.trim() === "") {
-    showMessageBox("Please fill in your last name and ID number.");
-    return;
-  }
-
-  if (!phoneNumber.startsWith("254") || phoneNumber.length < 12) {
-    showMessageBox("Please enter a valid phone number starting with '254'.");
-    return;
-  }
-
-  try {
-    // 1️⃣ Initiate STK Push
-    const response = await fetch(`https://blacklife-production-backend2025.onrender.com/pay`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        amount: selectedPrice,
-        phone: phoneNumber,
-        referredBy: referredByInput.value.trim() || null,
-        fullName: lastNameInput.value.trim(),
-        idNumber: idNumberInput.value.trim(),
-        tshirtSize: tshirtSize,
-        tshirtColor: tshirtColor,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!data.success || !data.reference) {
-      showMessageBox("❌ Payment initiation failed. Please try again.");
-      console.error("UMS Error:", data);
+    if (selectedPrice <= 0) {
+      showMessageBox("Please select a ticket type first.");
       return;
     }
 
-    showMessageBox(
-      "✅ Payment request sent! Please check your phone to complete the payment."
-    );
+    const isVipOrCouples =
+      document.getElementById("vip").checked ||
+      document.getElementById("couples-group").checked;
+    if (isVipOrCouples && (!tshirtSize || !tshirtColor)) {
+      showMessageBox("Please select a T-shirt size and color.");
+      return;
+    }
 
-    // 2️⃣ Poll backend for payment confirmation
-    const checkPayment = async () => {
-      try {
-        const res = await fetch(`https://blacklife-production-backend2025.onrender.com/tickets?reference=${data.reference}`);
-        const tickets = await res.json();
+    if (
+      lastNameInput.value.trim() === "" ||
+      idNumberInput.value.trim() === ""
+    ) {
+      showMessageBox("Please fill in your last name and ID number.");
+      return;
+    }
 
-        if (tickets.length > 0 && tickets[0].paymentStatus === "paid") {
-          showMessageBox("🎉 Payment confirmed! Your ticket has been saved.");
-          clearInterval(pollInterval);
+    if (!phoneNumber.startsWith("254") || phoneNumber.length < 12) {
+      showMessageBox("Please enter a valid phone number starting with '254'.");
+      return;
+    }
+
+    try {
+      // initiate STK push
+      const response = await fetch(
+        "https://blacklife-production-backend2025.onrender.com/pay",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            amount: selectedPrice,
+            phone: phoneNumber,
+            referredBy: referredByInput.value.trim() || null,
+            fullName: lastNameInput.value.trim(),
+            idNumber: idNumberInput.value.trim(),
+            tshirtSize: tshirtSize,
+            tshirtColor: tshirtColor,
+          }),
         }
-      } catch (err) {
-        console.error("Polling error:", err);
-      }
-    };
+      );
 
-    // Poll every 5 seconds until payment confirmed
-    const pollInterval = setInterval(checkPayment, 5000);
-  } catch (error) {
-    console.error("Error:", error);
-    showMessageBox("Something went wrong. Please try again.");
-  }
-});
+      const data = await response.json();
+
+      if (data.success && data.mpesaResponse) {
+        showMessageBox(
+          "✅ Payment request sent! Please check your phone to complete the payment."
+        );
+
+        // 🔁 Polling backend every 5 seconds
+        const reference = data.ticket._id;
+        const pollInterval = setInterval(async () => {
+          try {
+            const statusRes = await fetch(
+              `https://blacklife-production-backend2025.onrender.com/tickets?reference=${reference}`
+            );
+            const tickets = await statusRes.json();
+            if (tickets.length && tickets[0].paymentStatus === "paid") {
+              showMessageBox(
+                "🎉 Payment confirmed! Your ticket has been saved."
+              );
+              clearInterval(pollInterval);
+            } else if (
+              tickets.length &&
+              tickets[0].paymentStatus === "failed"
+            ) {
+              showMessageBox("❌ Payment failed. Please try again.");
+              clearInterval(pollInterval);
+            }
+          } catch (err) {
+            console.error("❌ Payment polling error:", err);
+          }
+        }, 5000);
+      } else {
+        showMessageBox("❌ Payment initiation failed. Please try again.");
+        console.error("UMS Error:", data);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      showMessageBox("Something went wrong. Please try again.");
+    }
+  });
 });
