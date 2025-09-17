@@ -157,11 +157,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await response.json();
 
-      if (data.success && data.mpesaResponse) {
+      if (data.success && data.umsResponse) {
         showMessageBox(
           "✅ Payment request sent! Please check your phone to complete the payment."
         );
-
+          console.log("UMS Response:", data.umsResponse);
         // 🔁 Polling backend every 5 seconds
         const reference = data.ticket._id;
         const pollInterval = setInterval(async () => {
