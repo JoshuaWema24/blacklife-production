@@ -128,67 +128,80 @@ const referredByInput = document.getElementById("referred-by");
   };
 
   payNowBtn.addEventListener("click", async () => {
-    const phoneNumber = phoneInput.value.trim();
+  const phoneNumber = phoneInput.value.trim();
 
-    if (selectedPrice <= 0) {
-      showMessageBox("Please select a ticket type first.");
+  if (selectedPrice <= 0) {
+    showMessageBox("Please select a ticket type first.");
+    return;
+  }
+
+  const isVipOrCouples =
+    document.getElementById("vip").checked ||
+    document.getElementById("couples-group").checked;
+
+  if (isVipOrCouples && (!tshirtSize || !tshirtColor)) {
+    showMessageBox("Please select a T-shirt size and color.");
+    return;
+  }
+
+  if (lastNameInput.value.trim() === "" || idNumberInput.value.trim() === "") {
+    showMessageBox("Please fill in your last name and ID number.");
+    return;
+  }
+
+  if (!phoneNumber.startsWith("254") || phoneNumber.length < 12) {
+    showMessageBox("Please enter a valid phone number starting with '254'.");
+    return;
+  }
+
+  try {
+    // 1️⃣ Initiate STK Push
+    const response = await fetch(`https://blacklife-production-backend2025.onrender.com/pay`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount: selectedPrice,
+        phone: phoneNumber,
+        referredBy: referredByInput.value.trim() || null,
+        fullName: lastNameInput.value.trim(),
+        idNumber: idNumberInput.value.trim(),
+        tshirtSize: tshirtSize,
+        tshirtColor: tshirtColor,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!data.success || !data.reference) {
+      showMessageBox("❌ Payment initiation failed. Please try again.");
+      console.error("UMS Error:", data);
       return;
     }
 
-    const isVipOrCouples =
-      document.getElementById("vip").checked ||
-      document.getElementById("couples-group").checked;
+    showMessageBox(
+      "✅ Payment request sent! Please check your phone to complete the payment."
+    );
 
-    if (isVipOrCouples && (!tshirtSize || !tshirtColor)) {
-      showMessageBox("Please select a T-shirt size and color.");
-      return;
-    }
+    // 2️⃣ Poll backend for payment confirmation
+    const checkPayment = async () => {
+      try {
+        const res = await fetch(`https://blacklife-production-backend2025.onrender.com/tickets?reference=${data.reference}`);
+        const tickets = await res.json();
 
-    if (
-      lastNameInput.value.trim() === "" ||
-      idNumberInput.value.trim() === ""
-    ) {
-      showMessageBox("Please fill in your last name and ID number.");
-      return;
-    }
-
-    if (!phoneNumber.startsWith("254") || phoneNumber.length < 12) {
-      showMessageBox("Please enter a valid phone number starting with '254'.");
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        "https://blacklife-production-backend2025.onrender.com/pay",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            amount: selectedPrice,
-            phone: phoneNumber,
-            referredBy: referredByInput.value.trim() || null, // optional
-            fullName: lastNameInput.value.trim(),
-            idNumber: idNumberInput.value.trim(),
-            tshirtSize: tshirtSize,
-            tshirtColor: tshirtColor,
-          }),
+        if (tickets.length > 0 && tickets[0].paymentStatus === "paid") {
+          showMessageBox("🎉 Payment confirmed! Your ticket has been saved.");
+          clearInterval(pollInterval);
         }
-      );
-
-      const data = await response.json();
-
-      if (data.success && data.mpesaResponse) {
-        showMessageBox(
-          "✅ Payment request sent! Please check your phone to complete the payment."
-        );
-        console.log("UMS Response:", data.mpesaResponse);
-      } else {
-        showMessageBox("❌ Payment initiation failed. Please try again.");
-        console.error("UMS Error:", data);
+      } catch (err) {
+        console.error("Polling error:", err);
       }
-    } catch (error) {
-      console.error("Error:", error);
-      showMessageBox("Something went wrong. Please try again.");
-    }
-  });
+    };
+
+    // Poll every 5 seconds until payment confirmed
+    const pollInterval = setInterval(checkPayment, 5000);
+  } catch (error) {
+    console.error("Error:", error);
+    showMessageBox("Something went wrong. Please try again.");
+  }
+});
 });
