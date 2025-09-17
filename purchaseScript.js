@@ -161,9 +161,10 @@ document.addEventListener("DOMContentLoaded", () => {
         showMessageBox(
           "✅ Payment request sent! Please check your phone to complete the payment."
         );
-          console.log("UMS Response:", data.umsResponse);
-        // 🔁 Polling backend every 5 seconds
-        const reference = data.ticket._id;
+        console.log("UMS Response:", data.umsResponse);
+        // 🔁 Polling backend every 5 secondsconst reference = data.reference; // use the reference returned by backend/UMS
+        const reference = data.reference; // use the reference returned by backend/UMS
+
         const pollInterval = setInterval(async () => {
           try {
             const statusRes = await fetch(
