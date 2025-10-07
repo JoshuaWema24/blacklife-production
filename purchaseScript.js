@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       // Initiate STK push
-      const response = await fetch("https://blacklife-production-backend2025.onrender.com/pay", {
+      const response = await fetch("https://blacklife-production-backend-n1nc.onrender.com/pay", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const reference = data.reference;
         const pollInterval = setInterval(async () => {
           try {
-            const statusRes = await fetch(`https://blacklife-production-backend2025.onrender.com/tickets?reference=${reference}`);
+            const statusRes = await fetch(`https://blacklife-production-backend-n1nc.onrender.com/tickets?reference=${reference}`);
             const tickets = await statusRes.json();
 
             if (tickets.length && tickets[0].paymentStatus === "paid") {
