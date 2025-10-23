@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black & Gold Merch Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Color Palette */
+        :root {
+            --black: #0D0D0D; /* Deep Black */
+            --gold: #FFD700; /* Standard Gold */
+            --light-gold: #FFF0B5; /* Highlight Gold */
+            --dark-grey: #1A1A1A; /* For card backgrounds */
+            --text-color: #E0E0E0; /* Light text for readability */
+        }
+
+        /* Base Styles & Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            /* Linear Gradient Background */
+            background: linear-gradient(135deg, var(--black) 0%, #291C00 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: var(--gold);
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Header */
+        .store-header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 20px;
+        }
+
+        .store-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .store-header p {
+            color: var(--light-gold);
+            font-size: 1.1em;
+        }
+
+        /* Product Grid Layout */
+        .product-grid {
+            display: grid;
+            /* Responsive grid: 3 columns on large screens, 1 on small */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Product Card Styling */
+        .product-card {
+            background-color: var(--dark-grey);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2); /* Subtle gold border */
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.15);
+        }
+
+        .product-image-container {
+            height: 250px;
+            overflow: hidden;
+            /* Optional: Linear Gradient Overlay on Image */
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        /* Order Now Button */
+        .order-button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s ease, transform 0.1s;
+            
+            /* Gold Gradient for Button */
+            background: linear-gradient(to right, #FFD700, #DAA520); 
+            color: var(--black); /* Black text on gold button */
+        }
+
+        .order-button:hover {
+            background: linear-gradient(to right, #DAA520, #FFD700);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4);
+        }
+
+        /* --- Order Screen Overlay Styles --- */
+
+        .order-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Dark overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure it's on top */
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .order-overlay.hidden {
+            display: none;
+            opacity: 0;
+        }
+
+        .order-form-card {
+            background-color: var(--dark-grey);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            border: 2px solid var(--gold);
+            /* Ensure the content is scrollable on small screens */
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .order-form-card h2, .order-form-card h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .price-display {
+            text-align: center;
+            font-size: 1.3em;
+            color: var(--light-gold);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--light-gold);
+            font-weight: 700;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--gold);
+            border-radius: 5px;
+            background-color: var(--black);
+            color: var(--text-color);
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--light-gold);
+            outline: none;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--gold), rgba(0, 0, 0, 0));
+            margin: 20px 0;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .submit-button, .close-button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            flex-grow: 1;
+            text-transform: uppercase;
+        }
+
+        .submit-button {
+            /* Primary Action Button (Gold Gradient) */
+            background: linear-gradient(to right, #FFD700, #DAA520);
+            color: var(--black);
+        }
+
+        .submit-button:hover {
+            opacity: 0.9;
+        }
+
+        .close-button {
+            /* Secondary Action Button (Black/Dark Gold) */
+            background-color: var(--black);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .close-button:hover {
+            background-color: #291C00;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .store-header h1 {
+                font-size: 2em;
+            }
+
+            .product-details {
+                text-align: center;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="store-header">
+        <h1>✨ Blacklife Merchandise</h1>
+        <p>A collection of luxury and style.</p>
+    </header>
+
+    <main class="product-grid">
+        <!-- Product Card 1 -->
+        <div class="product-card">
+            <div class="product-image-container">
+                <img src="https://placehold.co/400x300/111111/FFD700?text=Luxury+T-Shirt" alt="Luxury Black T-Shirt" class="product-image" onerror="this.onerror=null; this.src='https://placehold.co/400x300/111111/FFD700?text=Image+Load+Error'">
+            </div>
+            <div class="product-details">
+                <h2 class="product-title">Luxury Silk T-Shirt</h2>
+                <p class="product-description">Premium quality silk blend, tailored fit, and subtle gold logo detail. Perfect for any occasion.</p>
+                <p class="product-price">$59.99</p>
+                <button class="order-button" onclick="openOrderScreen('Luxury Silk T-Shirt', 59.99)">ORDER NOW</button>
+            </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="product-card">
+            <div class="product-image-container">
+                <img src="https://placehold.co/400x300/111111/FFD700?text=Executive+Watch" alt="Executive Chronograph Watch" class="product-image" onerror="this.onerror=null; this.src='https://placehold.co/400x300/111111/FFD700?text=Image+Load+Error'">
+            </div>
+            <div class="product-details">
+                <h2 class="product-title">Executive Chronograph</h2>
+                <p class="product-description">Matte black finish, genuine leather strap, and intricate gold movement details. Limited edition.</p>
+                <p class="product-price">$249.00</p>
+                <button class="order-button" onclick="openOrderScreen('Executive Chronograph', 249.00)">ORDER NOW</button>
+            </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="product-card">
+            <div class="product-image-container">
+                <img src="https://placehold.co/400x300/111111/FFD700?text=Designer+Hat" alt="Designer Snapback Hat" class="product-image" onerror="this.onerror=null; this.src='https://placehold.co/400x300/111111/FFD700?text=Image+Load+Error'">
+            </div>
+            <div class="product-details">
+                <h2 class="product-title">Designer Snapback Hat</h2>
+                <p class="product-description">Embroidered gold crest on a deep black microfiber fabric. Adjustable sizing for a perfect fit.</p>
+                <p class="product-price">$35.00</p>
+                <button class="order-button" onclick="openOrderScreen('Designer Snapback Hat', 35.00)">ORDER NOW</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- The Order/Checkout Screen (Hidden by default) -->
+    <div id="order-screen" class="order-overlay hidden">
+        <div class="order-form-card">
+            <h2 id="order-title">Order Details</h2>
+            <p id="order-price-display" class="price-display"></p>
+            <form id="checkout-form">
+                
+                <h3>Product Configuration</h3>
+                <div class="form-group">
+                    <label for="size">Size/Option:</label>
+                    <select id="size" name="size" required>
+                        <option value="S">Small</option>
+                        <option value="M">Medium</option>
+                        <option value="L">Large</option>
+                        <option value="XL">X-Large</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+                </div>
+                
+                <hr>
+
+                <h3>Customer & Location Details</h3>
+
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Delivery Location/Address:</label>
+                    <input type="text" id="location" name="location" placeholder="123 Main St, City, State/Province" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-button">PLACE ORDER</button>
+                    <button type="button" class="close-button" onclick="closeOrderScreen()">CANCEL</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle the Order Screen
+        const orderScreen = document.getElementById('order-screen');
+        const orderTitle = document.getElementById('order-title');
+        const orderPriceDisplay = document.getElementById('order-price-display');
+        const checkoutForm = document.getElementById('checkout-form');
+        
+        // Variables to hold product data
+        let currentProduct = { name: '', price: 0 };
+
+        /**
+         * Opens the order screen and populates it with product details.
+         * @param {string} productName - The name of the product being ordered.
+         * @param {number} productPrice - The price of the product.
+         */
+        function openOrderScreen(productName, productPrice) {
+            currentProduct = { name: productName, price: productPrice };
+            
+            // Update the form with the selected product details
+            orderTitle.textContent = `Ordering: ${productName}`;
+            orderPriceDisplay.textContent = `Price: $${productPrice.toFixed(2)}`;
+            
+            // Show the overlay
+            orderScreen.classList.remove('hidden');
+        }
+
+        /**
+         * Hides the order screen overlay.
+         */
+        function closeOrderScreen() {
+            // Hide the overlay
+            orderScreen.classList.add('hidden');
+            // Optionally reset the form
+            checkoutForm.reset();
+        }
+
+        // Simple form submission handler (for demo purposes)
+        checkoutForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Stop the default form submission
+            
+            const formData = new FormData(checkoutForm);
+            
+            // Construct the final order object
+            const orderDetails = {
+                product: currentProduct.name,
+                unitPrice: currentProduct.price,
+                size: formData.get('size'),
+                quantity: parseInt(formData.get('quantity')),
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                location: formData.get('location'),
+                // Calculate the total
+                total: currentProduct.price * parseInt(formData.get('quantity'))
+            };
+
+            // Instead of an alert, we'll use a simple confirmation message in the console
+            console.log('Order Placed:', orderDetails);
+            
+            // Display confirmation message using a custom alert replacement (for demonstration)
+            const confirmationMessage = document.createElement('div');
+            confirmationMessage.className = 'custom-confirmation-modal';
+            confirmationMessage.innerHTML = `
+                <div class="modal-content">
+                    <h3>Order Confirmation</h3>
+                    <p>Thank you, ${orderDetails.name}!</p>
+                    <p>Your order for ${orderDetails.quantity} x ${orderDetails.product} has been placed.</p>
+                    <p class="final-total">Total: <strong>$${orderDetails.total.toFixed(2)}</strong></p>
+                    <p class="delivery-info">We will contact you at ${orderDetails.phone} for delivery to ${orderDetails.location}.</p>
+                    <button onclick="document.body.removeChild(this.parentElement.parentElement)" class="submit-button">Close</button>
+                </div>
+            `;
+            document.body.appendChild(confirmationMessage);
+
+            closeOrderScreen();
+        });
+
+        // Add CSS for the custom alert replacement (since alert() is forbidden)
+        const modalStyle = document.createElement('style');
+        modalStyle.innerHTML = `
+            .custom-confirmation-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 2000;
+            }
+            .modal-content {
+                background-color: var(--dark-grey);
+                padding: 40px;
+                border-radius: 15px;
+                box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+                text-align: center;
+                max-width: 90%;
+            }
+            .modal-content h3 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+            .modal-content p {
+                margin-bottom: 10px;
+                font-size: 1.1em;
+            }
+            .final-total {
+                color: var(--gold);
+                font-size: 1.5em;
+                margin: 15px 0 25px 0;
+            }
+            .delivery-info {
+                font-size: 0.9em;
+                color: var(--light-gold);
+            }
+            .modal-content button {
+                margin-top: 20px;
+                padding: 10px 30px;
+            }
+        `;
+        document.head.appendChild(modalStyle);
+    </script>
+
+</body>
+</html>
