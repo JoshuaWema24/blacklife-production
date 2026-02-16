@@ -1,475 +1,200 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blacklife Production</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Permanent+Marker&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background: #111;
-        color: #ccc;
-        overflow-x: hidden;
-      }
-      .bg-pattern {
-        background-image: radial-gradient(
-            circle at 10% 10%,
-            #222 1px,
-            transparent 1px
-          ),
-          radial-gradient(circle at 90% 90%, #222 1px, transparent 1px);
-        background-size: 40px 40px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blacklife Production</title>
 
-      .glassmorphism {
-        background-color: rgba(30, 30, 30, 0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 1rem;
-      }
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-      @keyframes moveInCircles {
-        0% {
-          transform: scale(1) translate(0, 0);
-          opacity: 0.5;
-        }
-        50% {
-          transform: scale(1.1) translate(10px, -10px);
-          opacity: 0.8;
-        }
-        100% {
-          transform: scale(1) translate(0, 0);
-          opacity: 0.5;
-        }
-      }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-      .circle-animation-1 {
-        animation: moveInCircles 10s infinite ease-in-out;
-        animation-delay: 0s;
-      }
-      .circle-animation-2 {
-        animation: moveInCircles 12s infinite ease-in-out;
-        animation-delay: -2s;
-      }
-      .circle-animation-3 {
-        animation: moveInCircles 11s infinite ease-in-out;
-        animation-delay: -4s;
-      }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap" rel="stylesheet">
 
-      .card-animation {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInSlideUp 0.8s forwards;
-      }
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background: #111;
+      color: #ccc;
+      overflow-x: hidden;
+    }
 
-      .card-animation.stat-card-1 {
-        animation-delay: 0.1s;
-      }
-      .card-animation.stat-card-2 {
-        animation-delay: 0.2s;
-      }
-      .card-animation.stat-card-3 {
-        animation-delay: 0.3s;
-      }
+    .bg-pattern {
+      background-image:
+        radial-gradient(circle at 10% 10%, #222 1px, transparent 1px),
+        radial-gradient(circle at 90% 90%, #222 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
 
-      @keyframes fadeInSlideUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    .glassmorphism {
+      background-color: rgba(30, 30, 30, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+    }
 
-      .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 75%;
-        max-width: 300px;
-        background-color: #1a1a1a;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 50;
-      }
-      .sidebar.open {
-        transform: translateX(0);
-      }
+    .font-theatre {
+      font-family: "Archivo Black", sans-serif;
+    }
 
-      .font-theatre {
-        font-family: "Archivo Black", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-      }
+    .font-josefin {
+      font-family: "Josefin Sans", sans-serif;
+    }
 
-      /* ---------- Footer Styles ---------- */
-      footer {
-        background: #000;
-        color: #ccc;
-        font-family: "Poppins", sans-serif;
-        padding: 1.5rem 1rem;
-        text-align: center;
-        font-size: 0.85rem;
-        border-top: 2px solid #ffd700;
-        width: 100%;
-      }
+    @keyframes float {
+      0%,100% { transform: translate(0,0); opacity: .5 }
+      50% { transform: translate(10px,-10px); opacity: .8 }
+    }
 
-      /* Company Name */
-      footer h3 {
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: #ffd700;
-      }
+    .circle { animation: float 10s infinite ease-in-out; }
 
-      /* Links */
-      footer .links {
-        margin: 0.5rem 0;
-      }
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: 75%;
+      max-width: 300px;
+      background: #1a1a1a;
+      transform: translateX(-100%);
+      transition: transform .3s ease;
+      z-index: 50;
+    }
 
-      footer .links a {
-        color: #aaa;
-        margin: 0 10px;
-        font-size: 0.85rem;
-        transition: color 0.3s ease;
-      }
+    .sidebar.open { transform: translateX(0); }
 
-      footer .links a:hover {
-        color: #ffd700;
-      }
+    footer {
+      background: #000;
+      border-top: 2px solid #ffd700;
+      font-size: .85rem;
+    }
+  </style>
+</head>
 
-      /* Social Icons */
-      footer .socials {
-        margin: 0.8rem 0;
-      }
+<body class="bg-pattern min-h-screen">
 
-      footer .socials a {
-        color: #aaa;
-        margin: 0 10px;
-        transition: color 0.3s ease, transform 0.3s ease;
-        display: inline-block;
-      }
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar p-8">
+  <div class="flex justify-end mb-8">
+    <button id="close-menu" class="text-white text-3xl">&times;</button>
+  </div>
 
-      footer .socials a:hover {
-        color: #ffd700;
-        transform: scale(1.2);
-      }
+  <nav class="flex flex-col gap-4 text-lg">
+    <a href="index.html" class="text-white">Home</a>
+    <a href="ticket prices.html" class="text-white">Tickets</a>
+    <a href="productions.html" class="text-white">Productions</a>
+    <a href="merchandise.html" class="text-white">Merchandise</a>
+    <a href="Events.html" class="bg-white text-black px-4 py-2 rounded-full text-center font-semibold mt-4">
+      Events
+    </a>
+  </nav>
+</div>
 
-      footer .socials svg {
-        height: 20px;
-        width: 20px;
-      }
+<!-- Main -->
+<div class="container mx-auto px-4 py-10">
 
-      /* Copyright */
-      footer .copyright {
-        margin-top: 0.5rem;
-        color: #666;
-        font-size: 0.75rem;
-      }
- .text-white {
-   font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
- }
-      /* Responsive */
-      @media (max-width: 480px) {
-        footer .links a {
-          display: block;
-          margin: 6px 0;
-        }
-      }
-    </style>
-  </head>
-  <body class="bg-pattern min-h-screen">
-    <div id="sidebar" class="sidebar p-8">
-      <div class="flex justify-end mb-8">
-        <button id="close-menu" class="text-white text-3xl">&times;</button>
-      </div>
-      <nav class="flex flex-col space-y-4">
-        <a href="index.html" class="text-white text-lg font-semibold">Home</a>
-        <a href="ticket prices.html" class="text-white text-lg font-semibold"
-          >Tickets</a
-        >
-        <a href="productions.html" class="text-white text-lg font-semibold"
-          >Productions</a
-        >
-        <a
-              href="merchandise.html"
-              class="hover:text-white transition-colors duration-200"
-              >Merchandise
-              </a>
-        <button
-          class="bg-white text-black px-4 py-2 rounded-full font-semibold mt-4 hover:bg-gray-200 transition-colors duration-200"
-        >
-          <a href="Events.html"> Events</a>
-        </button>
-      </nav>
+  <!-- Header -->
+  <header class="flex justify-between items-center mb-16">
+    <div class="text-xl font-bold text-white">Blacklife Production</div>
+
+    <nav class="hidden md:flex gap-8 text-gray-400">
+      <a href="index.html" class="hover:text-white">Home</a>
+      <a href="ticket prices.html" class="hover:text-white">Tickets</a>
+      <a href="productions.html" class="hover:text-white">Productions</a>
+      <a href="merchandise.html" class="hover:text-white">Merchandise</a>
+    </nav>
+
+    <a href="Events.html"
+       class="hidden md:block bg-white text-black px-4 py-2 rounded-full font-semibold">
+      Events
+    </a>
+
+    <button id="open-menu" class="md:hidden text-white text-3xl">☰</button>
+  </header>
+
+  <!-- Hero -->
+  <section class="grid md:grid-cols-2 gap-12 items-center">
+    <div class="space-y-6">
+      <h2 class="font-theatre text-5xl text-yellow-400">
+        Blacklife Production
+      </h2>
+
+      <h1 class="font-josefin text-white text-3xl sm:text-4xl md:text-5xl font-bold">
+        Where Art Meets Life
+      </h1>
+
+      <p class="text-gray-400">
+        <span class="block text-yellow-400 font-semibold mt-4">VISION</span>
+        To inspire creativity, uplift communities, and transform lives through storytelling.
+        
+        <span class="block text-yellow-400 font-semibold mt-4">MISSION</span>
+        To nurture talent, promote positive values, and create powerful artistic works that educate and inspire.
+      </p>
     </div>
 
-    <div class="relative w-full overflow-hidden">
-      <div class="container mx-auto px-4 py-8 md:py-16">
-        <header class="flex justify-between items-center mb-16">
-          <div class="text-xl font-bold text-white" >Blacklife Production</div>
-          <nav class="hidden md:flex items-center space-x-8 text-gray-400">
-            <a
-              href="index.html"
-              class="hover:text-white transition-colors duration-200"
-              >Home</a
-            >
-            <a
-              href="ticket prices.html"
-              class="hover:text-white transition-colors duration-200"
-              >Tickets</a
-            >
-            <a
-              href="productions.html"
-              class="hover:text-white transition-colors duration-200"
-              >Productions</a
-            >
-            <a
-              href="merchandise.html"
-              class="hover:text-white transition-colors duration-200"
-              >Merchandise
-              </a>
-          </nav>
-          <button
-            class="hidden md:block bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-200"
-          >
-            <a href="Events.html"> Events</a>
-          </button>
-          <button
-            id="open-menu"
-            class="md:hidden text-white text-3xl leading-none"
-          >
-            ☰
-          </button>
-        </header>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center neg-mt">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" style="margin-top: -20px;">
-          <div class="space-y-6">
-            <p
-              class="font-theatre text-4xl font-bold"
-              style="
-                color: #ffd700;
-                text-shadow: 0 0 5px #ffd700;
-              font-size:50px;
-              "
-            >
-              Blacklife Production
-            </p>
-            <h1
-              class="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight" style="font-size: 26px;  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal:
-            >
-              Where Art Meets Life
-            </h1>
-            <p class="text-gray-400 text-lg">
-              <b style="color: gold; margin-left: 100px;">VISION</b><br />
-              To be a leading arts platform that inspires creativity, uplifts
-              communities, and transforms lives through impactful storytelling
-              and performance.<br />
-              <b style="color: gold;margin-left: 100px;">MISSION</b><br />
-              Black Life Production exists to nurture talent, promote positive
-              values, and create powerful artistic works that educate, inspire,
-              and bring hope to society.
-            </p>
-          </div>
-
-          <div class="relative flex justify-center md:justify-end">
-            <div class="relative w-full">
-              <div
-                class="absolute w-64 h-64 bg-yellow-500 rounded-full blur-3xl opacity-50 -top-10 -right-10 transform circle-animation-1"
-              ></div>
-              <div
-                class="absolute w-40 h-40 bg-yellow-700 rounded-full blur-3xl opacity-50 -bottom-10 -left-10 transform circle-animation-2"
-              ></div>
-              <div
-                class="absolute w-24 h-24 bg-yellow-900 rounded-full blur-3xl opacity-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 circle-animation-3"
-              ></div>
-              <img
-                src="WhatsApp Image 2025-09-09 at 4.43.55 PM-Photoroom.png"
-                alt="A scene from a Blacklife Production play"
-                class="relative z-10 w-full rounded-xl"
-                loading="lazy"
-                decoding="async"
-                onerror="this.src='https://placehold.co/800x600/222222/555555?text=Image+Loading+Error';"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-24 grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div
-            class="glassmorphism p-6 flex flex-col items-center sm:items-start text-center sm:text-left rounded-xl shadow-lg card-animation stat-card-1"
-          >
-            <h2 class="text-3xl font-bold text-white mb-1">Entertain</h2>
-            <p class="text-gray-400"></p>
-          </div>
-          <div
-            class="glassmorphism p-6 flex flex-col items-center sm:items-start text-center sm:text-left rounded-xl shadow-lg card-animation stat-card-2"
-          >
-            <h2 class="text-3xl font-bold text-white mb-1">Inspire</h2>
-            <p class="text-gray-400"></p>
-          </div>
-          <div
-            class="glassmorphism p-6 flex flex-col items-center sm:items-start text-center sm:text-left rounded-xl shadow-lg card-animation stat-card-3"
-          >
-            <h2 class="text-3xl font-bold text-white mb-1">Educate</h2>
-            <p class="text-gray-400"></p>
-          </div>
-        </div>
-
-        <div class="mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-12 items-start">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-            <img
-              src="WhatsApp Image 2025-09-09 at 5.04.22 PM.jpeg"
-              alt="Production 1"
-              class="w-full h-auto rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer md:h-[400px] lg:h-[600px]"
-              loading="lazy"
-              decoding="async"
-              onerror="this.src='https://placehold.co/800x600/222222/555555?text=Image+1+Missing';"
-            />
-            <img
-              src="homepage image.jpg"
-              alt="Production 2"
-              class="w-full h-auto rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer md:h-[400px] lg:h-[600px]"
-              loading="lazy"
-              decoding="async"
-              onerror="this.src='https://placehold.co/800x600/222222/555555?text=Image+2+Missing';"
-            />
-            <img
-              src="WhatsApp Image 2025-09-09 at 5.04.47 PM (1).jpeg"
-              alt="Production 3"
-              class="w-full h-auto rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer md:h-[400px] lg:h-[600px]"
-              loading="lazy"
-              decoding="async"
-              onerror="this.src='https://placehold.co/800x600/222222/555555?text=Image+3+Missing';"
-            />
-            <img
-              src="WhatsApp Image 2025-09-09 at 5.04.13 PM.jpeg"
-              alt="Production 4"
-              class="w-full h-auto rounded-xl object-cover transform transition-transform duration-300 hover:scale-105 cursor-pointer md:h-[400px] lg:h-[600px]"
-              loading="lazy"
-              decoding="async"
-              onerror="this.src='https://placehold.co/800x600/222222/555555?text=Image+4+Missing';"
-            />
-          </div>
-        </div>
-      </div>
+    <div class="relative">
+      <div class="absolute w-64 h-64 bg-yellow-500 rounded-full blur-3xl opacity-50 -top-10 -right-10 circle"></div>
+      <img src="WhatsApp Image 2025-09-09 at 4.43.55 PM-Photoroom.png"
+           class="relative rounded-xl z-10"
+           alt="Production scene">
     </div>
+  </section>
 
-    <footer>
-      <div class="container mx-auto px-4 py-8">
-        <h3>Blacklife Production</h3>
+  <!-- Values -->
+  <section class="mt-24 grid sm:grid-cols-3 gap-6">
+    <div class="glassmorphism p-6 text-center">
+      <h3 class="text-3xl font-bold text-white">Entertain</h3>
+    </div>
+    <div class="glassmorphism p-6 text-center">
+      <h3 class="text-3xl font-bold text-white">Inspire</h3>
+    </div>
+    <div class="glassmorphism p-6 text-center">
+      <h3 class="text-3xl font-bold text-white">Educate</h3>
+    </div>
+  </section>
 
-        <div class="links">
-          <a href="index.html">Home</a>
-          <a href="ticket prices.html">Tickets</a>
-          <a href="productions.html">Productions</a>
-        </div>
+  <!-- Gallery -->
+  <section class="mt-24 grid sm:grid-cols-2 gap-6">
+    <img src="WhatsApp Image 2025-09-09 at 5.04.22 PM.jpeg"
+         class="rounded-xl aspect-[3/4] object-cover hover:scale-105 transition">
 
-        <div class="socials">
-      
-      <a href="https://www.tiktok.com/@black.life8406?_t=ZM-8zc2pbz37kW&_r=1" target="_blank" rel="noopener" aria-label="TikTok">
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="currentColor">
-    <path d="M224 80a63.5 63.5 0 01-36.5-11.5A63.5 63.5 0 01176 32h-32v128a32 32 0 11-32-32v-32a64 64 0 1064 64V97.3a95.5 95.5 0 0048 14.7z"/>
-  </svg>
-</a>
+    <img src="homepage image.jpg"
+         class="rounded-xl aspect-[3/4] object-cover hover:scale-105 transition">
 
+    <img src="WhatsApp Image 2025-09-09 at 5.04.47 PM (1).jpeg"
+         class="rounded-xl aspect-[3/4] object-cover hover:scale-105 transition">
 
-          <a href="https://www.instagram.com/blacklifekenya?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
-            <svg
-              xmlns=""
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 2.163c3.204 0 3.584.012 
-            4.85.07 3.252.148 4.772 1.624 
-            4.907 4.91.058 1.265.07 
-            1.645.07 4.849 0 3.204-.012 
-            3.584-.07 4.85-.135 3.251-1.611 
-            4.771-4.91 4.906-1.266.058-1.644.07-4.85.07s-3.583-.012-4.85-.07c-3.252-.134-4.772-1.61-4.91-4.91C2.174 
-            15.647 2.162 15.268 2.162 12c0-3.259.014-3.668.072-4.948.2-4.358 
-            2.618-6.78 6.98-6.98C8.332 2.176 
-            8.741 2.163 12 2.163zm0 
-            1.837c-3.18 0-3.557.012-4.808.07-2.707.123-3.96 
-            1.376-4.083 4.083-.058 1.251-.07 
-            1.628-.07 4.808s.012 3.557.07 
-            4.808c.123 2.707 1.376 3.96 4.083 
-            4.083 1.251.058 1.628.07 4.808.07s3.557-.012 
-            4.808-.07c2.707-.123 3.96-1.376 
-            4.083-4.083.058-1.251.07-1.628.07-4.808s-.012-3.557-.07-4.808c-.123-2.707-1.376-3.96-4.083-4.083-1.251-.058-1.628-.07-4.808-.07zm0 
-            3.905a4.095 4.095 0 1 1 0 
-            8.19 4.095 4.095 0 0 1 0-8.19zm0 
-            6.753a2.658 2.658 0 1 0 0-5.316 
-            2.658 2.658 0 0 0 0 5.316zm4.406-7.845a.96.96 
-            0 1 1 0-1.92.96.96 0 0 1 0 1.92z"
-              />
-            </svg>
-          </a>
+    <img src="WhatsApp Image 2025-09-09 at 5.04.13 PM.jpeg"
+         class="rounded-xl aspect-[3/4] object-cover hover:scale-105 transition">
+  </section>
+</div>
 
-          <a href="https://www.youtube.com/@BlackLife-e1m">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19.615 3.184c-3.328-.868-6.864-.868-10.192 
-            0C6.046 3.992 4 6.002 4 8.798v6.404c0 2.796 
-            2.046 4.806 5.423 5.614 3.328.868 6.864.868 
-            10.192 0 3.377-.808 5.423-2.818 
-            5.423-5.614V8.798c0-2.796-2.046-4.806-5.423-5.614zM12 
-            17.026c-2.772 0-5.026-2.254-5.026-5.026S9.228 6.974 
-            12 6.974s5.026 2.254 5.026 5.026-2.254 
-            5.026-5.026 5.026zm-1.874-7.554L15.3 
-            12l-5.174 3.528V9.472z"
-              />
-            </svg>
-          </a>
-        </div>
+<!-- Footer -->
+<footer class="text-center py-8 text-gray-400">
+  <h3 class="text-yellow-400 font-bold mb-4">Blacklife Production</h3>
 
-        <div class="copyright">
-          &copy; 2024 <span style="color: #ffd700">Blacklife Production</span>.
-          All Rights Reserved.<a href="privacy policy.html" style="color: #aaa; margin-left: 10px;"
-            >Privacy Policy</a>
-        </div>
-      </div>
-    </footer>
+  <div class="flex justify-center gap-6 mb-4">
+    <a href="index.html">Home</a>
+    <a href="ticket prices.html">Tickets</a>
+    <a href="productions.html">Productions</a>
+  </div>
 
-    <script>
-      const openMenuBtn = document.getElementById("open-menu");
-      const closeMenuBtn = document.getElementById("close-menu");
-      const sidebar = document.getElementById("sidebar");
+  <p class="text-sm">
+    © 2024 <span class="text-yellow-400">Blacklife Production</span>. All Rights Reserved.
+  </p>
+</footer>
 
-      openMenuBtn.addEventListener("click", () => {
-        sidebar.classList.add("open");
-      });
+<script>
+  const openMenu = document.getElementById("open-menu");
+  const closeMenu = document.getElementById("close-menu");
+  const sidebar = document.getElementById("sidebar");
 
-      closeMenuBtn.addEventListener("click", () => {
-        sidebar.classList.remove("open");
-      });
-    </script>
-  </body>
+  openMenu.onclick = () => sidebar.classList.add("open");
+  closeMenu.onclick = () => sidebar.classList.remove("open");
+</script>
+
+</body>
 </html>
